@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="h-full bg-gray-100">
+<html class="h-full">
   <head>
     <title>Code Marathon</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -8,12 +8,26 @@
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.1/dist/flowbite.min.css" />
   </head>
   <body class="h-full">
-    <% if @use_navbar.present? %>
-      <%= render "layouts/application/with_navbar" %>
-    <% else %>
-      <%= render "layouts/application/without_navbar" %>
-    <% end %>
+    <div class="min-h-full">
+      <% if @use_navbar.present? %>
+        <%= render "layouts/application/navbar" %>
+      <% end %>
+      
+      <main>
+        <%= yield %>
+      </main>
+      
+      <footer class="bg-gray-100 mx-auto w-full max-w-container px-4 sm:px-6 lg:px-8">
+        <div class="border-t border-slate-900/5 py-10">
+          <img class="mx-auto h-12 w-auto text-slate-900" src="logo_code_marathon.png" alt=""/>
+          <p class="mt-5 text-center text-sm leading-6 text-slate-500">Code Marathon ©2021 Criado por <a href="https://github.com/paulomiranda98" target="_blank" rel="noopener noreferrer">Paulo Miranda</a></p>
+        </div>
+      </footer>
+    </div>
+
+    <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
   </body>
 </html>
