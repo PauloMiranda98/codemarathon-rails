@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="h-full bg-gray-100">
   <head>
     <title>Code Marathon</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -9,10 +9,11 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-
-  <body>
-    <main>
-      <%= yield %>
-    </main>
+  <body class="h-full">
+    <% if @ignore_navbar.present? %>
+      <%= render "layouts/application/without_navbar" %>
+    <% else %>
+      <%= render "layouts/application/with_navbar" %>
+    <% end %>
   </body>
 </html>
