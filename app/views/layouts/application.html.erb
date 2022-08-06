@@ -10,10 +10,10 @@
     <%= javascript_importmap_tags %>
   </head>
   <body class="h-full">
-    <% if @ignore_navbar.present? %>
-      <%= render "layouts/application/without_navbar" %>
-    <% else %>
+    <% if @use_navbar.present? %>
       <%= render "layouts/application/with_navbar" %>
+    <% else %>
+      <%= render "layouts/application/without_navbar" %>
     <% end %>
   </body>
 </html>

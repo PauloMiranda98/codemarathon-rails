@@ -8,10 +8,20 @@
           </div>
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline space-x-4">
-              <a href="/" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Início</a>
-              <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Conteúdo</a>
-              <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Questões</a>
-              <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Sobre</a>
+              <% @nav_items.map do |item| %>
+                <a
+                  key="<%= item[:title] %>"
+                  href="<%= item[:url] %>"
+                  <% if item[:is_current].present? %>
+                    class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
+                    aria-current="page"
+                  <% else %>
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  <% end %>
+                >
+                  <%= item[:title] %>
+                </a>
+              <% end %>
             </div>
           </div>
         </div>
@@ -75,15 +85,27 @@
     <div class="md:hidden" id="mobile-menu">
       <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-        <a href="#" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Início</a>
-        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Conteúdo</a>
-        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Questões</a>
-        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Sobre</a>
+
+        <% @nav_items.map do |item| %>
+          <a
+            key="<%= item[:title] %>"
+            href="<%= item[:url] %>"
+            <% if item[:is_current].present? %>
+              class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium"
+              aria-current="page"
+            <% else %>
+              class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+            <% end %>
+          >
+            <%= item[:title] %>
+          </a>
+        <% end %>
+
       </div>
       <div class="pt-4 pb-3 border-t border-gray-700">
         <div class="flex items-center px-5">
           <div class="flex-shrink-0">
-            <img class="h-10 w-10 rounded-full" src="without_image.png" alt="">
+            <img class="h-10 w-10 rounded-full" src="without_user.png" alt="">
           </div>
           <div class="ml-3">
             <div class="text-base font-medium leading-none text-white">Paulo Miranda</div>
