@@ -6,4 +6,5 @@ then
   gem install foreman
 fi
 
+bin/rails assets:precompile
 foreman start -f Procfile.dev "$@"
