@@ -10,6 +10,9 @@ const App = ({ arg }: AppProps) => {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-  const rootEl = document.getElementById("root");
-  ReactDOM.render(<App arg="Rails 7 with ESBuild" />, rootEl);
+  const rootEl = document.getElementById("root-to-react");
+  
+  if(rootEl){
+    ReactDOM.render(<App arg="Rails 7 with ESBuild" />, rootEl);
+  }
 });

@@ -8,12 +8,39 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.3/dist/flowbite.min.css" />
   </head>
 
   <body class="h-full">
     <div class="min-h-full">
-      <% if @use_navbar.present? %>
-        <%= render "layouts/application/navbar" %>
+      <%= render(NavbarComponent.new(user: nil)) do |nav| %>
+        <% nav.with_title do %>
+          <img class="h-12" src="logo_white_120.png" alt="Logo Code Marathon">
+        <% end %>
+
+        <% nav.with_item(
+          title: "Início", 
+          url: "/", 
+          is_active: @current_nav == :home
+        ) %>
+
+        <% nav.with_item(
+          title: "Conteúdo", 
+          url: "/", 
+          is_active: @current_nav == :contents
+        ) %>
+
+        <% nav.with_item(
+          title: "Questões", 
+          url: "/", 
+          is_active: @current_nav == :problems
+        ) %>
+
+        <% nav.with_item(
+          title: "Sobre", 
+          url: "/", 
+          is_active: @current_nav == :about
+        ) %>
       <% end %>
 
       <main>
@@ -28,6 +55,6 @@
       </footer>
     </div>
 
-    <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
+    <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
   </body>
 </html>

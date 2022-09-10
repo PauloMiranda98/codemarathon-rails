@@ -30,6 +30,9 @@ gem "cssbundling-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+# A framework for building reusable, testable & encapsulated view components in Ruby on Rails.
+gem "view_component"
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
