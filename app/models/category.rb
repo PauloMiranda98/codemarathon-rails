@@ -4,4 +4,6 @@ class Category < ApplicationRecord
   
   validates :name, :slug, :position, presence: true
   validates :slug, uniqueness: true
+
+  has_many :subjects
 end

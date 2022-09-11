@@ -1,4 +1,4 @@
-module ContentCard
+module SubjectCard
   class FrequencyComponent < ViewComponent::Base
     def initialize(id: SecureRandom.hex, title:, frequency:)
       @id = id 

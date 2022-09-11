@@ -7,16 +7,16 @@
       <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><%= @title %></h5>
   
       <div class="mb-4">
-        <%= render(ContentCard::FrequencyComponent.new(
+        <%= render(SubjectCard::FrequencyComponent.new(
           title: "Frequência na OBI",
           frequency: @obi_frequency
         ))%>
       </div>
 
       <div class="mb-4">
-        <%= render(ContentCard::FrequencyComponent.new(
+        <%= render(SubjectCard::FrequencyComponent.new(
           title: "Frequência na Maratona",
-          frequency: @maratona_frequency
+          frequency: @icpc_frequency
         ))%>
       </div>
     </div>
