@@ -5,5 +5,8 @@ class SubjectsController < ApplicationController
 
   def show
     @subject = Subject.find_by(slug: params[:id])
+    redirect_to(root_path) && return if @subject.blank?
+
+    @category = @subject.category
   end
 end

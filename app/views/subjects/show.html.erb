@@ -1,1 +1,11 @@
-Assunto massa!
+<div class="p-12 bg-slate-50">
+  <%= render(BreadcrumbComponent.new) do |breadcrumb| %>
+    <% breadcrumb.with_item(title: "Início", url: root_path) %>
+    <% breadcrumb.with_item(title: @category.name, url: category_path(@category)) %>
+    <% breadcrumb.with_item(title: @subject.name) %>
+  <% end %>
+
+  <div class="mt-2 p-8 w-full bg-white rounded-lg border shadow-lg dark:bg-gray-800 dark:border-gray-700">
+    <h1><%= @subject.name %></h1>
+  </div>
+</div>
