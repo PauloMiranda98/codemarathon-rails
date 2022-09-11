@@ -33,6 +33,9 @@ gem "jbuilder"
 # A framework for building reusable, testable & encapsulated view components in Ruby on Rails.
 gem "view_component"
 
+# To use human-friendly URL
+gem 'friendly_id', '~> 5.4.0'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
