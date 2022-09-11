@@ -1,0 +1,21 @@
+<div class="p-12 bg-slate-50">
+  <%= render(TabsComponent.new) do |tabs| %>
+    <% tabs.with_tab(title: "Introdução", url: "#", is_active: true) %>
+    <% tabs.with_tab(title: "Matemática", url: "#") %>
+    <% tabs.with_tab(title: "Estrutura de Dados", url: "#") %>
+
+    <% tabs.with_body do %>
+      <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 p-4 bg-white rounded-lg md:p-8 dark:bg-gray-800" id="about" role="tabpanel" aria-labelledby="about-tab">
+        <% (1..16).each do |i| %>
+          <%= render(ContentCardComponent.new(
+            title: "Transforma Rápida de Furier (FFT)",
+            image_url: "https://codemarathon.com.br/img/introduction.png",
+            obi_frequency: rand(0..4),
+            maratona_frequency: rand(0..4),
+            link_url: "#"
+          ))%>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

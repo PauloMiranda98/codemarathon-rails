@@ -1,0 +1,59 @@
+<div id="<%= @id %>" data-tooltip-target="frequency-tooltip-<%= @id %>">
+  <h3 class="mb-2 text-center text-sm font-medium text-gray-500 dark:text-gray-400">
+    <%= @title %>
+  </h3>
+  <div class="grid grid-cols-4 gap-2">
+    <% case @frequency %>
+    <% when 1 %>
+      <div class="h-1 bg-red-300 dark:bg-red-400"></div>
+      <div class="h-1 bg-gray-200 dark:bg-gray-600"></div>
+      <div class="h-1 bg-gray-200 dark:bg-gray-600"></div>
+      <div class="h-1 bg-gray-200 dark:bg-gray-600"></div>
+
+      <div id="frequency-tooltip-<%= @id %>" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
+        Raramente aparece nessa competição
+        <div class="tooltip-arrow" data-popper-arrow></div>
+      </div>
+    <% when 2 %>
+      <div class="h-1 bg-orange-300 dark:bg-orange-400"></div>
+      <div class="h-1 bg-orange-300 dark:bg-orange-400"></div>
+      <div class="h-1 bg-gray-200 dark:bg-gray-600"></div>
+      <div class="h-1 bg-gray-200 dark:bg-gray-600"></div>
+
+      <div id="frequency-tooltip-<%= @id %>" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
+        Não aparece com frequência nessa competição
+        <div class="tooltip-arrow" data-popper-arrow></div>
+      </div>
+    <% when 3 %>
+      <div class="h-1 bg-lime-300 dark:bg-lime-400"></div>
+      <div class="h-1 bg-lime-300 dark:bg-lime-400"></div>
+      <div class="h-1 bg-lime-300 dark:bg-lime-400"></div>
+      <div class="h-1 bg-gray-200 dark:bg-gray-600"></div>
+
+      <div id="frequency-tooltip-<%= @id %>" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
+        Aparece com frequência nessa competição
+        <div class="tooltip-arrow" data-popper-arrow></div>
+      </div>
+    <% when 4 %>
+      <div class="h-1 bg-green-400 dark:bg-green-600"></div>
+      <div class="h-1 bg-green-400 dark:bg-green-600"></div>
+      <div class="h-1 bg-green-400 dark:bg-green-600"></div>
+      <div class="h-1 bg-green-400 dark:bg-green-600"></div>
+
+      <div id="frequency-tooltip-<%= @id %>" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
+        Quase sempre aparece nessa competição
+        <div class="tooltip-arrow" data-popper-arrow></div>
+      </div>
+    <% else %>
+      <div class="h-1 bg-gray-200 dark:bg-gray-600"></div>
+      <div class="h-1 bg-gray-200 dark:bg-gray-600"></div>
+      <div class="h-1 bg-gray-200 dark:bg-gray-600"></div>
+      <div class="h-1 bg-gray-200 dark:bg-gray-600"></div>
+
+      <div id="frequency-tooltip-<%= @id %>" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
+        Não aparece nessa competição
+        <div class="tooltip-arrow" data-popper-arrow></div>
+      </div>    
+    <% end %>
+  </div>
+</div>
