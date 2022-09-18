@@ -1,4 +1,14 @@
-module.exports = {
+const disabledCss = {
+  'code::before': false,
+  'code::after': false,
+  pre: false,
+  code: false,
+  'pre code': false,
+  'code::before': false,
+  'code::after': false,
+}
+
+module.exports = {  
   content: [
     './app/views/**/*.html.erb',
     './app/helpers/**/*.rb',
@@ -9,6 +19,18 @@ module.exports = {
     './node_modules/flowbite/**/*.js'
   ],
   plugins: [
+    require('@tailwindcss/typography'),
     require('flowbite/plugin')
-  ]
+  ],
+  theme: {
+		extend: {
+			typography: {
+				DEFAULT: { css: disabledCss },
+				sm: { css: disabledCss },
+				lg: { css: disabledCss },
+				xl: { css: disabledCss },
+				'2xl': { css: disabledCss },
+			},
+		},
+	},
 }

@@ -51,6 +51,9 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
+# Redcarpet is a Ruby library for Markdown processing that smells like butterflies and popcorn.
+gem "redcarpet"
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
