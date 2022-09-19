@@ -6,6 +6,8 @@ const disabledCss = {
   'pre code': false,
   'code::before': false,
   'code::after': false,
+  'blockquote p:first-of-type::before': false,
+	'blockquote p:last-of-type::after': false,
 }
 
 module.exports = {  
