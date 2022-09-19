@@ -7,8 +7,18 @@ class MarkdownWithLatexComponent < ViewComponent::Base
   
   def obtain_html
     text = pre_customization(@text)
-
-    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true, fenced_code_blocks: true)
+    
+    renderer = Redcarpet::Render::HTML.new(
+      link_attributes: {
+        target: "_blank",
+        rel: "noopener noreferer"
+      }
+    )
+    markdown = Redcarpet::Markdown.new(renderer, 
+      autolink: true, 
+      tables: true, 
+      fenced_code_blocks: true
+    )    
     text = markdown.render(text)
 
     text = pos_customization(text)
