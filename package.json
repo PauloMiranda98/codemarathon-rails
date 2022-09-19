@@ -9,6 +9,7 @@
     "esbuild": "^0.15.5",
     "flowbite": "^1.5.3",
     "highlight.js": "^11.6.0",
+    "katex": "^0.16.2",
     "postcss": "^8.4.16",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

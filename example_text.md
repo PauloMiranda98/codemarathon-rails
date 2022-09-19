@@ -65,6 +65,10 @@ Apesar de ter bastante material sempre vai surgir dúvidas. Para isso, existem d
 - Grupo do [Telegram](https://t.me/maratonabrasil) (o mais ativo)
 - Grupo do [Discord](https://discord.gg/6ZbANeYkmb)
 
+Tentando formula <e>2^4</e>, temos que:
+
+<be>2^4 = 16</be>
+
 ```cpp
   #include <"iostream">
 

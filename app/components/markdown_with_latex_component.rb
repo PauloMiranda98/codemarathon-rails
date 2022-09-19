@@ -19,10 +19,17 @@ class MarkdownWithLatexComponent < ViewComponent::Base
   end
 
   def pos_customization(text)
+    # Add Code Highlighting
     text = text.gsub(
       '<pre><code class="cpp">',
       '<pre><code class="language-cpp rounded-lg shadow-lg w-full text-sm">'
     )
+
+    # Add LaTeX
+    text = text.gsub('<e>', '<span class="inline-latex">')
+    text = text.gsub('</e>', '</span>')
+    text = text.gsub('<be>', '<span class="block-latex">')
+    text = text.gsub('</be>', '</span>')
     
     text
   end
