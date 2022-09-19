@@ -17,7 +17,7 @@ export default class extends Controller {
     document.querySelectorAll('.block-latex').forEach((el) => {
       katex.render(el.textContent, el, {
         throwOnError: false,
-        displayMode: true
+        displayMode: true,
       });
     });    
   }
