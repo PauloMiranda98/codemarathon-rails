@@ -18,7 +18,9 @@
     <div class="min-h-full">
       <%= render(NavbarComponent.new(user: nil)) do |nav| %>
         <% nav.with_title do %>
-          <img class="h-12" src="/logo_white_120.png" alt="Logo Code Marathon">
+          <a href="/">
+            <img class="h-12" src="/logo_white_120.png" alt="Logo Code Marathon">
+          </a>
         <% end %>
 
         <% nav.with_item(
