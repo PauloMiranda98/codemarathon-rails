@@ -14,28 +14,4 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_11_015557) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "categories", force: :cascade do |t|
-    t.string "name"
-    t.string "slug"
-    t.integer "position"
-    t.text "image_data"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "subjects", force: :cascade do |t|
-    t.string "name"
-    t.string "slug"
-    t.bigint "category_id", null: false
-    t.integer "difficulty"
-    t.integer "obi_frequency"
-    t.integer "icpc_frequency"
-    t.integer "position"
-    t.boolean "is_public"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["category_id"], name: "index_subjects_on_category_id"
-  end
-
-  add_foreign_key "subjects", "categories"
 end
