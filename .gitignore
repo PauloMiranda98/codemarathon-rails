@@ -37,4 +37,4 @@
 /config/credentials.yml.enc
 
 /node_modules
-.env
+/config/env_variables.yml
