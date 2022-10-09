@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   resources :categories, path: 'conteudos', only: [:index, :show] do 
     get ':id', to: 'subjects#show', as: :subject
   end
+
+  get 'sobre', to: 'about#index', as: :about
 end

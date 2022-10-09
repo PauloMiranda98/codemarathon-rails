@@ -19,7 +19,7 @@
       <%= render(NavbarComponent.new(user: nil)) do |nav| %>
         <% nav.with_title do %>
           <a href="/">
-            <img class="h-12" src="/logo_white_120.png" alt="Logo Code Marathon">
+            <img class="h-12" src="<%= image_path("logo_white_120.png") %>" alt="Logo Code Marathon">
           </a>
         <% end %>
 
@@ -35,15 +35,15 @@
           is_active: @current_nav == :contents
         ) %>
 
-        <% nav.with_item(
+        <%# <% nav.with_item(
           title: "Questões", 
           url: "/", 
           is_active: @current_nav == :problems
-        ) %>
+        ) %> %>
 
         <% nav.with_item(
           title: "Sobre", 
-          url: "/", 
+          url: about_path, 
           is_active: @current_nav == :about
         ) %>
       <% end %>
@@ -54,7 +54,7 @@
 
       <footer class="bg-gray-100 mx-auto w-full max-w-container px-4 sm:px-6 lg:px-8">
         <div class="border-t border-slate-900/5 py-10">
-          <img class="mx-auto h-12 w-auto text-slate-900" src="/logo_code_marathon.png" alt=""/>
+          <img class="mx-auto h-12 w-auto text-slate-900" src="<%= image_path("logo_code_marathon.png") %>" alt="Logo do Code Marathon"/>
           <p class="mt-5 text-center text-sm leading-6 text-slate-500">Code Marathon ©2021 Criado por <a href="https://github.com/paulomiranda98" target="_blank" rel="noopener noreferrer">Paulo Miranda</a></p>
         </div>
       </footer>
