@@ -36,10 +36,10 @@ class MarkdownWithLatexComponent < ViewComponent::Base
     )
 
     # Add LaTeX
-    text = text.gsub('<e>', '<span class="inline-latex">')
-    text = text.gsub('</e>', '</span>')
-    text = text.gsub('<be>', '<span class="block-latex">')
-    text = text.gsub('</be>', '</span>')
+    text = text.gsub('<tex>', '<span class="inline-latex">')
+    text = text.gsub('</tex>', '</span>')
+    text = text.gsub('<TEX>', '<span class="block-latex">')
+    text = text.gsub('</TEX>', '</span>')
     
     text
   end
