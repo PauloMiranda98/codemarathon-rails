@@ -3,8 +3,8 @@
     <% @categories.each do |category| %>
       <% tabs.with_tab(
         title: category.name, 
-        url: category_path(category), 
-        is_active: (category.id == @category.id)
+        url: category_path(category.slug), 
+        is_active: (category.slug == @category.slug)
       ) %>
     <% end %>
 
@@ -13,10 +13,10 @@
         <% @subjects.each do |subject| %>
           <%= render(SubjectCardComponent.new(
             title: subject.name,
-            image_url: "https://codemarathon.com.br/img/introduction.png",
+            image_url: @category.image,
             obi_frequency: subject.obi_frequency,
             icpc_frequency: subject.icpc_frequency,
-            link_url: category_subject_path(@category, subject)
+            link_url: category_subject_path(@category.slug, subject.slug)
           ))%>
         <% end %>
       </div>

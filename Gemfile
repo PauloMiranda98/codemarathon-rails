@@ -54,6 +54,9 @@ gem "bootsnap", require: false
 # Redcarpet is a Ruby library for Markdown processing that smells like butterflies and popcorn.
 gem "redcarpet"
 
+# Faraday is an HTTP client library abstraction layer that provides a common interface over many adapters
+gem "faraday"
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 

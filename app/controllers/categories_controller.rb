@@ -3,26 +3,29 @@ class CategoriesController < ApplicationController
     @current_nav = :contents
   end
 
+  before_action :load_categories
+
   def index
-    redirect_to category_path(Category.first)
+    redirect_to category_path(@categories.first.slug)
   end
 
   def show
-    @categories = Category.all.order(:position)
-    
-    @category = Category.find_by(slug: params[:id])
-    @subjects = @category.subjects.order(:position) 
+    @category = obtain_category(params[:id])
+    @subjects = @category.subjects
+  end
 
-    if @subjects.blank?
-      @subjects = 16.times.map do |i|
-        Subject.new(
-          id: i,
-          name: "Números Primos", 
-          slug: "numeros-primos",
-          obi_frequency: rand(0..4),
-          icpc_frequency: rand(0..4)
-        ) 
-      end
+  private
+
+  def load_categories
+    @categories = CodeMarathonContents::Api::Categories.find_all
+
+    @category_by_slug = {}
+    @categories.each do |category|
+      @category_by_slug[category.slug] = category
     end
+  end
+
+  def obtain_category(slug)
+    @category = @category_by_slug[slug]
   end
 end

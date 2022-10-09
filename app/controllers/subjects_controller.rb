@@ -4,9 +4,8 @@ class SubjectsController < ApplicationController
   end
 
   def show
-    @subject = Subject.find_by(slug: params[:id])
-    redirect_to(root_path) && return if @subject.blank?
-
-    @category = @subject.category
+    @category = CodeMarathonContents::Api::Categories.find(slug: params[:category_id])
+    @subject = CodeMarathonContents::Api::Subjects.find(category_slug: params[:category_id], subject_slug: params[:id])
+    @content = CodeMarathonContents::Api::Contents.find(category_slug: "introducao", subject_slug: "como-estudar-para-maratona-de-programacao")    
   end
 end
