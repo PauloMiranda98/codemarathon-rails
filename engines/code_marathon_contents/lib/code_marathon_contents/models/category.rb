@@ -7,17 +7,11 @@ module CodeMarathonContents::Models
 
       @name = hash[:name]
       @slug = hash[:slug]
-      @image = build_image_url(hash[:image])
+      @image = hash[:image]
       
       @subjects = hash[:subjects].map do |subject|
         CodeMarathonContents::Models::Subject.new(subject)
       end
-    end
-
-    private
-
-    def build_image_url(relative_path)
-      "http://localhost#{relative_path}"
     end
   end
 end

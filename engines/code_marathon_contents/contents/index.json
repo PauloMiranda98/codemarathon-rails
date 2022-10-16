@@ -1,0 +1,58 @@
+[
+  {
+    "name": "Introdução",
+    "slug": "introducao",
+    "image": "code_marathon_contents/categories/introducao.png",
+    "subjects": [
+      {
+        "name": "Como Estudar para Maratona de Programação?",
+        "slug": "como-estudar-para-maratona-de-programacao",
+        "difficulty": 1,
+        "obi_frequency": 0,
+        "icpc_frequency": 4
+      }
+    ]
+  }, 
+  {
+    "name": "Matemática",
+    "slug": "matematica",
+    "image": "code_marathon_contents/categories/matematica.png",
+    "subjects": []
+  }, 
+  {
+    "name": "Estrutura de Dados",
+    "slug": "estrutura-de-dados",
+    "image": "code_marathon_contents/categories/estrutura-de-dados.png",
+    "subjects": []
+  }, 
+  {
+    "name": "Técnicas de Programação",
+    "slug": "tecnicas-de-programacao",
+    "image": "code_marathon_contents/categories/tecnicas-de-programacao.png",
+    "subjects": []
+  }, 
+  {
+    "name": "Processamento de Strings",
+    "slug": "processamento-de-strings",
+    "image": "code_marathon_contents/categories/processamento-de-strings.png",
+    "subjects": []
+  }, 
+  {
+    "name": "Geometria",
+    "slug": "geometria",
+    "image": "code_marathon_contents/categories/geometria.png",
+    "subjects": []
+  }, 
+  {
+    "name": "Grafos",
+    "slug": "grafos",
+    "image": "code_marathon_contents/categories/grafos.png",
+    "subjects": []
+  }, 
+  {
+    "name": "Variados",
+    "slug": "variados",
+    "image": "code_marathon_contents/categories/variados.png",
+    "subjects": []
+  }
+]

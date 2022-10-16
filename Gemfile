@@ -85,3 +85,5 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem 'code_marathon_contents', path: 'engines/code_marathon_contents'
