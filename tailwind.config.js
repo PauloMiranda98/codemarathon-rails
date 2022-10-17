@@ -16,9 +16,11 @@ module.exports = {
     './app/helpers/**/*.rb',
     './app/assets/stylesheets/**/*.css',
     './app/javascript/**/*.js',
+    './app/javascript/**/*.tsx',
     './app/components/**/*.html.erb',
     './app/components/**/*.rb',
-    './node_modules/flowbite/**/*.js'
+    './node_modules/flowbite/**/*.js',
+    './node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}'
   ],
   plugins: [
     require('@tailwindcss/typography'),
