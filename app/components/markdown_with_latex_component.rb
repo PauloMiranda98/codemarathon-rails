@@ -8,7 +8,7 @@ class MarkdownWithLatexComponent < ViewComponent::Base
   def obtain_html
     text = pre_customization(@text)
     
-    renderer = Redcarpet::Render::HTML.new(
+    renderer = MarkdownWithLatex::MyRenderHtml.new(
       link_attributes: {
         target: "_blank",
         rel: "noopener noreferer"
