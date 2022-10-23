@@ -7,7 +7,7 @@ enum ParticipantType {
   CONTESTANT = "CONTESTANT", 
   PRACTICE = "PRACTICE", 
   VIRTUAL = "VIRTUAL", 
-  MANAGER = "OUT_OF_COMPETITION",
+  MANAGER = "MANAGER",
   OUT_OF_COMPETITION = "OUT_OF_COMPETITION",
 }
 
@@ -37,14 +37,15 @@ type ContestModel = {
 }
 
 class Contest extends React.Component<ContestModel> {
-  getUrl(contestId, index){
+  getUrl(contestId: number, index: string){
     if (contestId < 100000) {
       return `https://codeforces.com/contest/${contestId}/problem/${index}`;
     } else {
       return `https://codeforces.com/gym/${contestId}/problem/${index}`;
     }
   }
-  getColor(status){
+
+  getColor(status: ProblemStatus){
     switch(status){
       case ProblemStatus.NOT_TRIED:
         return ProblemColors.NOT_TRIED;
@@ -70,7 +71,7 @@ class Contest extends React.Component<ContestModel> {
           {this.props.subtitle}
         </h2>
 
-        <ul className="flex justify-center gap-2 my-2">
+        <ul className="flex flex-wrap justify-center gap-2 my-2">
           {this.props.problemList.map((problem) => (
             <li key={problem.index}>
               <Tooltip content={problem.name} placement="bottom">
@@ -155,15 +156,26 @@ function mapperToContest(handle, submissions, party, standings){
 
 
 type AppState = {
-  handle: string
-  contestList: Array<ContestModel>
+  handle: string,
+  participantType: Object,
+  contestList: Array<ContestModel>,
+  contestListSize: number
 };
 
 class App extends React.Component<{}, AppState> {
   codeforcesApi = new CodeforcesApi();
+  PAGE_SIZE = 8
 
   state = {
     handle: "",
+    contestListSize: 0,
+    participantType: {
+      CONTESTANT: true,
+      PRACTICE: true,
+      VIRTUAL: true,
+      MANAGER: true,
+      OUT_OF_COMPETITION: true
+    },
     contestList: []
   };
 
@@ -178,6 +190,8 @@ class App extends React.Component<{}, AppState> {
   };
 
   updateContestList = (handle: string): void => {
+    this.setState({contestList: [], contestListSize: 0});
+
     this.codeforcesApi.getSubmissions(handle)
       .then((data: any) => {
         this.updateSubmissions(handle, data.result);
@@ -187,17 +201,20 @@ class App extends React.Component<{}, AppState> {
   updateSubmissions(handle: String, submissions: any) {
     let partySet: Set<Number> = new Set();
     let partyList: Array<any> = [];
+    
     for (const submission of submissions) {
       let contestId = submission.contestId;
-
-      if(!partySet.has(contestId)) {
+      
+      if(!partySet.has(contestId) && this.hasValidParticipantType(submission.author.participantType)) {
         partySet.add(contestId)
         partyList.push(submission.author);
       }
 
-      if(partySet.size == 10)
+      if(partySet.size == this.PAGE_SIZE)
         break;
     }
+
+    this.setState({contestListSize: partyList.length});
 
     partyList.forEach((party) => {
       return this.codeforcesApi.getStandings(handle, party.contestId)
@@ -211,26 +228,78 @@ class App extends React.Component<{}, AppState> {
       });
   }
 
+  hasValidParticipantType(participantType: string): boolean {
+    return this.state.participantType[participantType]
+  }
+
   getLegends(hasContets: boolean) {
     if(hasContets)
       return (
-        <div className="flex justify-center gap-1 my-4">
-          <span className="bg-gray-700 text-white text-sm font-medium mr-2 px-2.5 py-0.5 rounded ">
-            Não foi tentado
-          </span>
-          <span className="bg-red-700 text-white text-sm font-medium mr-2 px-2.5 py-0.5 rounded ">
-            Foi tentado mas não foi resolvido
-          </span>
-          <span className="bg-green-700 text-white text-sm font-medium mr-2 px-2.5 py-0.5 rounded ">
-           Resolvido durante a competição
-          </span>
-          <span className="bg-blue-700 text-white text-sm font-medium mr-2 px-2.5 py-0.5 rounded ">
-            Resolvido após a competição
-          </span>
+        <div>
+          <div className="flex flex-col md:flex-row justify-center gap-1 my-4">
+            <span className="bg-gray-700 text-white text-sm font-medium mr-2 px-2.5 py-0.5 rounded ">
+              Não foi tentado
+            </span>
+            <span className="bg-red-700 text-white text-sm font-medium mr-2 px-2.5 py-0.5 rounded ">
+              Foi tentado mas não foi resolvido
+            </span>
+            <span className="bg-green-700 text-white text-sm font-medium mr-2 px-2.5 py-0.5 rounded ">
+            Resolvido durante a competição
+            </span>
+            <span className="bg-blue-700 text-white text-sm font-medium mr-2 px-2.5 py-0.5 rounded ">
+              Resolvido após a competição
+            </span>
+          </div>
+          <div>
+          </div>
         </div>
       )
     else
       return null;
+  }
+
+  handleChange(e: React.ChangeEvent<HTMLInputElement>, key: string): void {
+    this.setState((prevState) => {
+      let newParticipantType = prevState.participantType;
+      newParticipantType[key] = e.target.checked;
+
+      return ({participantType: newParticipantType});
+    });
+  }
+
+  filter(){
+    return (
+      <div>
+        <h3 className="my-4 font-semibold text-gray-900 dark:text-white">Considerar apenas</h3>
+        <ul className="items-center w-full text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+          { 
+            Object.keys(this.state.participantType).map((key) => (
+              <li className="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+                <div className="flex items-center pl-3">
+                  <input id={key} type="checkbox" checked={this.state.participantType[key]} onChange={(e) => this.handleChange(e, key)} className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"/>
+                  <label htmlFor={key} className="py-3 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-300">{key}</label>
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    );
+  }
+
+  progressBar() {
+    if(this.state.contestListSize == 0)
+      return null;
+    
+    const percetage = (this.state.contestList.length*100) / this.state.contestListSize
+
+    return (
+      <div className="my-1 w-full bg-gray-200 rounded-full dark:bg-gray-700">
+        <div className="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full" style={{width: `${percetage}%`}}>
+          {percetage > 15 ? `${percetage}%` : "..."}
+        </div>
+      </div>
+    );
   }
 
   render() {
@@ -246,6 +315,10 @@ class App extends React.Component<{}, AppState> {
             Buscar
           </button>
         </div>
+
+        {this.progressBar()}
+
+        {this.filter()}
 
         {this.getLegends(this.state.contestList.length > 0)}
 
