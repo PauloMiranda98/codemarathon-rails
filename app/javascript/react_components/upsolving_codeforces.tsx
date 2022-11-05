@@ -382,7 +382,7 @@ class App extends React.Component<{}, AppState> {
       <nav>
         <ul className="inline-flex -space-x-px">
           <li>
-            <button aria-disabled={currentPage == 1} onClick={() => this.onPageChange(currentPage - 1)} className="py-2 px-3 ml-0 leading-tight text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Voltar</button>
+            <button disabled={currentPage == 1} onClick={() => this.onPageChange(currentPage - 1)} className="py-2 px-3 ml-0 leading-tight text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Voltar</button>
           </li>
           {
             pages.map((page: number): JSX.Element => {
