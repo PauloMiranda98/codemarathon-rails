@@ -204,7 +204,7 @@ class App extends React.Component<{}, AppState> {
     e.preventDefault();
 
     this.resetStates();
-    this.requestSubmissionList(this.state.handle);
+    this.requestSubmissionList(this.state.handleInput);
   };
 
   resetStates = (): void => {
@@ -225,7 +225,6 @@ class App extends React.Component<{}, AppState> {
       this.updatePartyList(data.result);
     });
   }
-
 
   updatePartyList = (submissions: any) => {
     let partySet: Set<Number> = new Set();
