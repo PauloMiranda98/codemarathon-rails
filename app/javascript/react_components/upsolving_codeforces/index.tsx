@@ -1,159 +1,10 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
-import { Tooltip } from "flowbite-react";
 import { CodeforcesApi } from "./codeforces_api";
 
-enum ParticipantType {
-  CONTESTANT = "CONTESTANT", 
-  PRACTICE = "PRACTICE", 
-  VIRTUAL = "VIRTUAL", 
-  MANAGER = "MANAGER",
-  OUT_OF_COMPETITION = "OUT_OF_COMPETITION",
-}
-
-enum ProblemColors {
-  NOT_TRIED = "bg-gray-700 hover:bg-gray-800", 
-  TRIED = "bg-red-700 hover:bg-red-800", 
-  UPSOLVING = "bg-blue-700 hover:bg-blue-800",
-  ACCEPT = "bg-green-700 hover:bg-green-800"
-}
-
-enum ProblemStatus {
-  NOT_TRIED, TRIED, UPSOLVING, ACCEPT, 
-}
-
-type ProblemModel = {
-  contestId: number,
-  index: string;
-  name: string;
-  status: ProblemStatus;
-}
-
-type ContestModel = {
-  contestId: number;
-  subtitle: string;
-  contestName: string;
-  problemList: Array<ProblemModel>;
-}
-
-class Contest extends React.Component<ContestModel> {
-  getUrl(contestId: number, index: string){
-    if (contestId < 100000) {
-      return `https://codeforces.com/contest/${contestId}/problem/${index}`;
-    } else {
-      return `https://codeforces.com/gym/${contestId}/problem/${index}`;
-    }
-  }
-
-  getColor(status: ProblemStatus){
-    switch(status){
-      case ProblemStatus.NOT_TRIED:
-        return ProblemColors.NOT_TRIED;
-      case ProblemStatus.TRIED:
-        return ProblemColors.TRIED;
-      case ProblemStatus.UPSOLVING:
-        return ProblemColors.UPSOLVING;
-      case ProblemStatus.ACCEPT:
-        return ProblemColors.ACCEPT;
-      default:
-        return ""
-    }
-  }
-
-  render() {
-    return (
-      <div className="my-4">
-        <h2 className="text-2xl font-bold text-center">
-          {this.props.contestName}
-        </h2>
-
-        <h2 className="text-md text-center">
-          {this.props.subtitle}
-        </h2>
-
-        <ul className="flex flex-wrap justify-center gap-2 my-2">
-          {this.props.problemList.map((problem) => (
-            <li key={problem.index}>
-              <Tooltip content={problem.name} placement="bottom">
-                <a href={this.getUrl(problem.contestId, problem.index)} target="_blank" rel="noopener noreferrer">
-                  <button className= {"w-12 h-12 " + this.getColor(problem.status) + " text-white shadow-md text-xl focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-lg"}>
-                    {problem.index}
-                  </button>
-                </a>
-              </Tooltip>
-            </li>
-          ))}
-        </ul>
-      </div>
-    );
-  }
-}
-
-function isParticipationInTraining(type: ParticipantType): boolean {
-  return (type == ParticipantType.CONTESTANT) ||
-         (type == ParticipantType.VIRTUAL) ||
-         (type == ParticipantType.OUT_OF_COMPETITION);
-}
-
-function mapperToContest(handle, party, standings){
-  let contest: ContestModel = {
-    contestId: 0,
-    contestName: "",
-    subtitle: "",
-    problemList: []
-  };
-
-  let firstParty = standings.rows[0] || party;
-
-  contest.contestId = standings.contest.id;
-  contest.contestName = standings.contest.name;
-  contest.problemList = standings.problems.map((problem: any): ProblemModel => {
-    return {
-      contestId: standings.contest.id,
-      index: problem.index,
-      name: problem.name,
-      status: ProblemStatus.NOT_TRIED
-    }
-  });
-
-  if(firstParty.teamName != null){
-    let memberNames = firstParty.members.map((m) => m.handle).join(", ");
-    contest.subtitle = `${firstParty.teamName}: ${memberNames}`
-  }else{
-    contest.subtitle = `Individual: ${handle}`;
-  }
-
-  for(const row of standings.rows){
-    for(let p=0; p < row.problemResults.length; p++){
-      let problemResult = row.problemResults[p];
-      let currentStatus = contest.problemList[p].status;
-
-      if(currentStatus == ProblemStatus.ACCEPT)
-        continue
-      
-      if(problemResult.points > 0 && isParticipationInTraining(row.party.participantType)){
-        contest.problemList[p].status = ProblemStatus.ACCEPT;
-        continue;
-      }
-
-      if(currentStatus == ProblemStatus.UPSOLVING)
-        continue;
-
-      if(problemResult.points > 0){
-        contest.problemList[p].status = ProblemStatus.UPSOLVING;
-        continue;
-      }
-
-      if(problemResult.rejectedAttemptCount > 0){
-        contest.problemList[p].status = ProblemStatus.TRIED;
-        continue;
-      }
-    }
-  }
-
-  return contest;
-}
-
+import { ContestComponent } from "./components/contest_component";
+import { Contest } from "./models/contest";
+import { ContestFactory } from "./factories/contest_factory";
 
 type AppState = {
   handleInput: string,
@@ -162,8 +13,8 @@ type AppState = {
   handle: string,
   participantType: Object,
 
-  partyList: Array<any>,
-  contestList: Array<ContestModel>,
+  contestIdList: Array<number>,
+  contestList: Array<Contest>,
   contestListSize: number,
 
   currentPage: number,
@@ -187,7 +38,7 @@ class App extends React.Component<{}, AppState> {
     handle: "",
     participantType: {},
 
-    partyList: [],
+    contestIdList: [],
     contestList: [],
     contestListSize: 0,
 
@@ -204,65 +55,66 @@ class App extends React.Component<{}, AppState> {
     e.preventDefault();
 
     this.resetStates();
-    this.requestSubmissionList(this.state.handleInput);
+    this.findSubmissionList(this.state.handleInput);
   };
 
   resetStates = (): void => {
     this.setState({
       handle: this.state.handleInput,
       participantType: this.state.participantTypeInput,
-      contestList: [], 
-      contestListSize: 0, 
-      partyList: [],
+
+      contestIdList: [],
+      contestList: [],
+      contestListSize: 0,
+
       currentPage: -1,
       totalPages: -1,
     });
   }
 
-
-  requestSubmissionList = (handle: string): void => {
-    this.codeforcesApi.getSubmissions(handle).then((data: any) => {
-      this.updatePartyList(data.result);
+  findSubmissionList = (handle: string): void => {
+    this.codeforcesApi.getSubmissions(handle).then((data: any) : void => {
+      this.updateContestIdList(data.result);
     });
   }
 
-  updatePartyList = (submissions: any) => {
-    let partySet: Set<Number> = new Set();
-    let partyList: Array<any> = [];
+  updateContestIdList = (submissions: any) => {
+    let contestIdSet: Set<number> = new Set();
     
     for (const submission of submissions) {
       let contestId = submission.contestId;
       
-      if(!partySet.has(contestId) && this.hasValidParticipantType(submission.author.participantType)) {
-        partySet.add(contestId)
-        partyList.push(submission.author);
+      if(!contestIdSet.has(contestId) && this.hasValidParticipantType(submission.author.participantType)) {
+        contestIdSet.add(contestId)
       }
     }
 
+    const contestIdList = Array.from(contestIdSet);
+
     this.setState({
-      partyList: partyList,
+      contestIdList: contestIdList,
       currentPage: 1,
-      totalPages: this.paginateSize(partyList)
+      totalPages: this.paginateSize(contestIdList)
     });
 
-    this.updateContestList(1, partyList);
+    this.updateContestList(1, contestIdList);
   }
 
-  updateContestList = (pageNumber: number, partyList: Array<any>) => {
-    const currentPartyList = this.paginate(partyList, pageNumber, this.state.pageSize);
+  updateContestList = (pageNumber: number, contestIdList: Array<number>) => {
+    const currentContestIdList = this.paginate(contestIdList, pageNumber, this.state.pageSize);
     
     this.setState({
       contestList: [],
-      contestListSize: currentPartyList.length
+      contestListSize: currentContestIdList.length
     })
 
-    currentPartyList.forEach((party) => {
-      return this.codeforcesApi.getStandings(this.state.handle, party.contestId)
+    currentContestIdList.forEach((contestId) => {
+      return this.codeforcesApi.getStandings(this.state.handle, contestId)
         .then((data: any) => {
-          let contest = mapperToContest(this.state.handle, party, data.result);
+          let contest = ContestFactory.createContestByContestStandingsJson(data.result);
 
-          this.setState((state, props) => ({
-            contestList: [...state.contestList, contest]
+          this.setState((prevState: AppState) => ({
+            contestList: [...prevState.contestList, contest]
           }));
         });
       });
@@ -418,7 +270,7 @@ class App extends React.Component<{}, AppState> {
   onPageChange = (page: number) => {
     this.setState({currentPage: page});
 
-    this.updateContestList(page, this.state.partyList);
+    this.updateContestList(page, this.state.contestIdList);
   }
 
   render() {
@@ -445,16 +297,10 @@ class App extends React.Component<{}, AppState> {
 
         <div>
           {
-            this.state.contestList.map((contest: ContestModel) => (
+            this.state.contestList.map((contest: Contest) => (
               <div>
                 <hr className="my-8 h-px bg-gray-200 border-0"></hr>
-                <Contest 
-                  key={contest.contestId} 
-                  contestId={contest.contestId} 
-                  subtitle={contest.subtitle} 
-                  contestName={contest.contestName} 
-                  problemList={contest.problemList} 
-                />
+                <ContestComponent {...contest} />
               </div>
             ))
           }
