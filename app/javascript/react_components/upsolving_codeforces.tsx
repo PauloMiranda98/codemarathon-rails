@@ -95,7 +95,7 @@ function isParticipationInTraining(type: ParticipantType): boolean {
          (type == ParticipantType.OUT_OF_COMPETITION);
 }
 
-function mapperToContest(handle, submissions, party, standings){
+function mapperToContest(handle, party, standings){
   let contest: ContestModel = {
     contestId: 0,
     contestName: "",
@@ -156,49 +156,78 @@ function mapperToContest(handle, submissions, party, standings){
 
 
 type AppState = {
+  handleInput: string,
+  participantTypeInput: Object,
+
   handle: string,
   participantType: Object,
+
+  partyList: Array<any>,
   contestList: Array<ContestModel>,
-  contestListSize: number
+  contestListSize: number,
+
+  currentPage: number,
+  pageSize: number,
+  totalPages: number,
 };
 
 class App extends React.Component<{}, AppState> {
   codeforcesApi = new CodeforcesApi();
-  PAGE_SIZE = 8
 
   state = {
-    handle: "",
-    contestListSize: 0,
-    participantType: {
+    handleInput: "",
+    participantTypeInput: {
       CONTESTANT: true,
       PRACTICE: true,
       VIRTUAL: true,
       MANAGER: true,
-      OUT_OF_COMPETITION: true
+      OUT_OF_COMPETITION: true,
     },
-    contestList: []
+
+    handle: "",
+    participantType: {},
+
+    partyList: [],
+    contestList: [],
+    contestListSize: 0,
+
+    currentPage: -1,
+    pageSize: 8,
+    totalPages: -1,
   };
 
   onChangeHandle = (e: React.FormEvent<HTMLInputElement>): void => {
-    this.setState({ handle: e.currentTarget.value });
+    this.setState({ handleInput: e.currentTarget.value });
   };
   
   onSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
 
-    this.updateContestList(this.state.handle);
+    this.resetStates();
+    this.requestSubmissionList(this.state.handle);
   };
 
-  updateContestList = (handle: string): void => {
-    this.setState({contestList: [], contestListSize: 0});
-
-    this.codeforcesApi.getSubmissions(handle)
-      .then((data: any) => {
-        this.updateSubmissions(handle, data.result);
-      });  
+  resetStates = (): void => {
+    this.setState({
+      handle: this.state.handleInput,
+      participantType: this.state.participantTypeInput,
+      contestList: [], 
+      contestListSize: 0, 
+      partyList: [],
+      currentPage: -1,
+      totalPages: -1,
+    });
   }
 
-  updateSubmissions(handle: String, submissions: any) {
+
+  requestSubmissionList = (handle: string): void => {
+    this.codeforcesApi.getSubmissions(handle).then((data: any) => {
+      this.updatePartyList(data.result);
+    });
+  }
+
+
+  updatePartyList = (submissions: any) => {
     let partySet: Set<Number> = new Set();
     let partyList: Array<any> = [];
     
@@ -209,17 +238,29 @@ class App extends React.Component<{}, AppState> {
         partySet.add(contestId)
         partyList.push(submission.author);
       }
-
-      if(partySet.size == this.PAGE_SIZE)
-        break;
     }
 
-    this.setState({contestListSize: partyList.length});
+    this.setState({
+      partyList: partyList,
+      currentPage: 1,
+      totalPages: this.paginateSize(partyList)
+    });
 
-    partyList.forEach((party) => {
-      return this.codeforcesApi.getStandings(handle, party.contestId)
+    this.updateContestList(1, partyList);
+  }
+
+  updateContestList = (pageNumber: number, partyList: Array<any>) => {
+    const currentPartyList = this.paginate(partyList, pageNumber, this.state.pageSize);
+    
+    this.setState({
+      contestList: [],
+      contestListSize: currentPartyList.length
+    })
+
+    currentPartyList.forEach((party) => {
+      return this.codeforcesApi.getStandings(this.state.handle, party.contestId)
         .then((data: any) => {
-          let contest = mapperToContest(handle, submissions, party, data.result);
+          let contest = mapperToContest(this.state.handle, party, data.result);
 
           this.setState((state, props) => ({
             contestList: [...state.contestList, contest]
@@ -228,11 +269,22 @@ class App extends React.Component<{}, AppState> {
       });
   }
 
-  hasValidParticipantType(participantType: string): boolean {
+  hasValidParticipantType = (participantType: string): boolean => {
     return this.state.participantType[participantType]
   }
 
-  getLegends(hasContets: boolean) {
+  paginateSize = (array: Array<any>): number => {
+    return Math.ceil(array.length / this.state.pageSize);
+  }
+
+  paginate = (array: Array<any>, pageNumber: number, pageSize: number): Array<any> => {
+    const start = (pageNumber - 1) * pageSize;
+    const end = start + pageSize;
+
+    return array.slice(start, end);
+  }
+
+  getLegends = (hasContets: boolean) => {
     if(hasContets)
       return (
         <div>
@@ -258,25 +310,25 @@ class App extends React.Component<{}, AppState> {
       return null;
   }
 
-  handleChange(e: React.ChangeEvent<HTMLInputElement>, key: string): void {
-    this.setState((prevState) => {
-      let newParticipantType = prevState.participantType;
-      newParticipantType[key] = e.target.checked;
+  handleChange = (e: React.ChangeEvent<HTMLInputElement>, key: string): void => {
+    this.setState((prevState: AppState) => {
+      let participantType = prevState.participantTypeInput;
+      participantType[key] = e.target.checked;
 
-      return ({participantType: newParticipantType});
+      return {participantTypeInput: participantType};
     });
   }
 
-  filter(){
+  filter = () => {
     return (
       <div>
         <h3 className="my-4 font-semibold text-gray-900 dark:text-white">Considerar apenas</h3>
         <ul className="items-center w-full text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white">
           { 
-            Object.keys(this.state.participantType).map((key) => (
+            Object.keys(this.state.participantTypeInput).map((key) => (
               <li className="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
                 <div className="flex items-center pl-3">
-                  <input id={key} type="checkbox" checked={this.state.participantType[key]} onChange={(e) => this.handleChange(e, key)} className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"/>
+                  <input id={key} type="checkbox" checked={this.state.participantTypeInput[key]} onChange={(e) => this.handleChange(e, key)} className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"/>
                   <label htmlFor={key} className="py-3 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-300">{key}</label>
                 </div>
               </li>
@@ -287,7 +339,7 @@ class App extends React.Component<{}, AppState> {
     );
   }
 
-  progressBar() {
+  progressBar = () => {
     if(this.state.contestListSize == 0)
       return null;
     
@@ -302,23 +354,93 @@ class App extends React.Component<{}, AppState> {
     );
   }
 
+  loadPagination = () => {
+    if(this.state.totalPages <= 1)
+      return null;
+    const currentPage = this.state.currentPage;
+
+    let pages: Array<number> = [];
+    if(this.state.totalPages <= 8){
+      for(let i = 1; i <= this.state.totalPages; i++)
+        pages.push(i);
+    } else {
+      pages = pages.concat([1, 2]);
+
+      if(currentPage - 1 >= 4)
+        pages.push(-1);
+      
+      for(let i = currentPage-1; i <= currentPage + 1; i++)
+        if(i > 2 && i < this.state.totalPages - 1)
+          pages.push(i);
+
+      if(currentPage + 1 < this.state.totalPages - 2)
+        pages.push(-1);
+  
+      pages = pages.concat([this.state.totalPages - 1, this.state.totalPages]);
+    }
+
+    return (
+      <nav>
+        <ul className="inline-flex -space-x-px">
+          <li>
+            <button aria-disabled={currentPage == 1} onClick={() => this.onPageChange(currentPage - 1)} className="py-2 px-3 ml-0 leading-tight text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Voltar</button>
+          </li>
+          {
+            pages.map((page: number): JSX.Element => {
+              if(page == -1){
+                return (
+                  <li>
+                    <button disabled className="py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400">...</button>
+                  </li>
+                )
+              }else if (page == this.state.currentPage){
+                return(
+                  <li>
+                    <button aria-current="page" disabled={currentPage == 1} className="py-2 px-3 leading-tight text-blue-600 bg-blue-50 border border-gray-300 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">{page}</button>
+                  </li>
+                )
+              }else{
+                return(
+                  <li>
+                    <button onClick={() => this.onPageChange(page)} className="py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">{page}</button>
+                  </li>
+                )  
+              }
+            })
+          }
+          <li>
+            <button disabled={currentPage == this.state.totalPages} onClick={() => this.onPageChange(currentPage + 1)} className="py-2 px-3 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Avançar</button>
+          </li>
+        </ul>
+      </nav>
+    );
+  }
+
+  onPageChange = (page: number) => {
+    this.setState({currentPage: page});
+
+    this.updateContestList(page, this.state.partyList);
+  }
+
   render() {
     return (
-      <form onSubmit={this.onSubmit}>
-        <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-gray-300">Search</label>
-        <div className="relative">
-          <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-            <svg aria-hidden="true" className="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+      <div>
+        <form onSubmit={this.onSubmit}>
+          <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-gray-300">Search</label>
+          <div className="relative">
+            <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+              <svg aria-hidden="true" className="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            </div>
+            <input type="search" id="codeforces-handle" value={this.state.handleInput} onChange={this.onChangeHandle} className="block p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Digite seu handle do Codeforces" required/>
+            <button type="submit" className="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+              Buscar
+            </button>
           </div>
-          <input type="search" id="codeforces-handle" value={this.state.handle} onChange={this.onChangeHandle} className="block p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Digite seu handle do Codeforces" required/>
-          <button type="submit" className="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-            Buscar
-          </button>
-        </div>
 
-        {this.progressBar()}
+          {this.progressBar()}
 
-        {this.filter()}
+          {this.filter()}
+        </form>
 
         {this.getLegends(this.state.contestList.length > 0)}
 
@@ -338,7 +460,11 @@ class App extends React.Component<{}, AppState> {
             ))
           }
         </div>
-      </form>
+
+        <div className="flex items-center justify-center text-center">
+          {this.loadPagination()}
+        </div>
+      </div>
     );
   }
 }
