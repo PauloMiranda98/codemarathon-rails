@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -34,7 +36,7 @@ gem "jbuilder"
 gem "view_component"
 
 # To use human-friendly URL
-gem 'friendly_id', '~> 5.4.0'
+gem "friendly_id", "~> 5.4.0"
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
@@ -66,12 +68,13 @@ gem "faraday"
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
-  gem 'rspec-rails', '~> 6.0.0'
+  gem "rspec-rails", "~> 6.0.0"
 
   # Add gems to lint
-  gem 'bundler-audit'
-  gem 'brakeman'
-  gem 'rubocop-rails'
+  gem "bundler-audit"
+  gem "brakeman"
+  gem "rubocop-rails"
+  gem "rubocop-rails_config"
 end
 
 group :development do
@@ -90,7 +93,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
-  gem 'simplecov'
+  gem "simplecov"
 end
 
-gem 'code_marathon_contents', path: 'engines/code_marathon_contents'
+gem "code_marathon_contents", path: "engines/code_marathon_contents"

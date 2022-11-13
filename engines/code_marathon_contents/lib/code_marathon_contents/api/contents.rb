@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module CodeMarathonContents::Api
   class Contents
     def self.find(category_slug:, subject_slug:)
@@ -6,8 +8,8 @@ module CodeMarathonContents::Api
       )
 
       CodeMarathonContents::Models::Content.new(
-        category_slug: category_slug,
-        subject_slug: subject_slug,
+        category_slug:,
+        subject_slug:,
         text: text_in_markdown
       )
     end

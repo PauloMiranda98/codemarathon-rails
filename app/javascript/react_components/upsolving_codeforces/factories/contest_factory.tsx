@@ -3,8 +3,8 @@ import { Problem, ProblemStatus } from "../models/problem";
 
 function isParticipationInTraining(type: ParticipantType): boolean {
   return (type == ParticipantType.CONTESTANT) ||
-         (type == ParticipantType.VIRTUAL) ||
-         (type == ParticipantType.OUT_OF_COMPETITION);
+    (type == ParticipantType.VIRTUAL) ||
+    (type == ParticipantType.OUT_OF_COMPETITION);
 }
 
 export class ContestFactory {
@@ -24,7 +24,7 @@ export class ContestFactory {
       members: [],
       problemList: []
     };
-  
+
     contest.contestId = standings.contest.id;
     contest.contestName = standings.contest.name;
     contest.problemList = standings.problems.map((problem: any): Problem => {
@@ -35,43 +35,43 @@ export class ContestFactory {
         status: ProblemStatus.NOT_TRIED
       }
     });
-    
+
     let memberSet = new Set<string>();
-  
-    for(const row of standings.rows){
-      for(let p=0; p < row.problemResults.length; p++){
+
+    for (const row of standings.rows) {
+      for (let p = 0; p < row.problemResults.length; p++) {
         let problemResult = row.problemResults[p];
         let currentStatus = contest.problemList[p].status;
-  
+
         row.party.members.forEach((member) => {
           memberSet.add(member.handle);
         })
-  
-        if(currentStatus == ProblemStatus.ACCEPT)
+
+        if (currentStatus == ProblemStatus.ACCEPT)
           continue
-        
-        if(problemResult.points > 0 && isParticipationInTraining(row.party.participantType)){
+
+        if (problemResult.points > 0 && isParticipationInTraining(row.party.participantType)) {
           contest.problemList[p].status = ProblemStatus.ACCEPT;
           continue;
         }
-  
-        if(currentStatus == ProblemStatus.UPSOLVING)
+
+        if (currentStatus == ProblemStatus.UPSOLVING)
           continue;
-  
-        if(problemResult.points > 0){
+
+        if (problemResult.points > 0) {
           contest.problemList[p].status = ProblemStatus.UPSOLVING;
           continue;
         }
-  
-        if(problemResult.rejectedAttemptCount > 0){
+
+        if (problemResult.rejectedAttemptCount > 0) {
           contest.problemList[p].status = ProblemStatus.TRIED;
           continue;
         }
       }
     }
-  
+
     contest.members = Array.from(memberSet);
-  
-    return contest;  
+
+    return contest;
   }
 }

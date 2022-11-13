@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module CodeMarathonContents::Models
   class Subject
     attr_accessor :name, :slug, :category_slug, :difficulty, :obi_frequency, :icpc_frequency

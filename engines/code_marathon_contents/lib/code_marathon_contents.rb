@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "code_marathon_contents/version"
 require "code_marathon_contents/engine"
 

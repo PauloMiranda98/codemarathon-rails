@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module CodeMarathonContents::Api
   class Base
     def self.obtain_file_text(relative_path:)
@@ -6,10 +8,8 @@ module CodeMarathonContents::Api
     end
 
     private
-
-    def self.code_marathon_contents_path
-      "#{Rails.root}/engines/code_marathon_contents"
-    end
+      def self.code_marathon_contents_path
+        "#{Rails.root}/engines/code_marathon_contents"
+      end
   end
 end
-

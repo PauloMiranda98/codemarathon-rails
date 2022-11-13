@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative "boot"
 
 require "rails/all"
@@ -13,9 +15,9 @@ module CodemarathonRails
 
     config.before_configuration do
       env_variables_path = File.join(Rails.root, "config", "env_variables.yml")
-      YAML.load(File.open(env_variables_path)).each do |key,value|
+      YAML.load(File.open(env_variables_path)).each do |key, value|
         ENV[key.to_s] = value.to_s
-      end if File.exists?(env_variables_path)
+      end if File.exist?(env_variables_path)
     end
 
     # Configuration for the application, engines, and railties goes here.

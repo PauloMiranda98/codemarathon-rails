@@ -1,5 +1,5 @@
 export enum ProblemStatus {
-  NOT_TRIED, TRIED, UPSOLVING, ACCEPT, 
+  NOT_TRIED, TRIED, UPSOLVING, ACCEPT,
 }
 
 export type Problem = {

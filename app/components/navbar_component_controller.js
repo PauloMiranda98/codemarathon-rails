@@ -1,15 +1,14 @@
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static targets = ["mobileMenuIcon"]
+  static targets = ["mobileMenuIcon"];
 
-  connect() {
-  }
+  connect() {}
 
   toggleMobileIcon() {
-    this.mobileMenuIconTargets.forEach(element => {
+    this.mobileMenuIconTargets.forEach((element) => {
       element.classList.toggle("hidden");
-      element.classList.toggle("block");        
+      element.classList.toggle("block");
     });
   }
 }

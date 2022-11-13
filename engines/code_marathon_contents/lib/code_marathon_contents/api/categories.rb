@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module CodeMarathonContents::Api
   class Categories
     def self.find_all

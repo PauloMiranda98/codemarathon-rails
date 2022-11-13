@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SubjectCardComponent < ViewComponent::Base
   def initialize(title:, image_url:, obi_frequency:, icpc_frequency:, link_url:)
     @title = title

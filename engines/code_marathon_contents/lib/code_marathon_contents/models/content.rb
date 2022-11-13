@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module CodeMarathonContents::Models
   class Content
     attr_accessor :category_slug, :subject_slug, :text

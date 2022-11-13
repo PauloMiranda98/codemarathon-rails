@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module CodeMarathonContents::Api
   class Subjects
     def self.find(category_slug:, subject_slug:)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class NavbarComponent < ViewComponent::Base
   renders_one  :title
   renders_many :items, Navbar::NavItemComponent

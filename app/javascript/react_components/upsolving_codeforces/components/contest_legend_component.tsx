@@ -1,7 +1,7 @@
 import * as React from "react";
 
-export class ContestLegendComponent extends React.Component{  
-  render(){
+export class ContestLegendComponent extends React.Component {
+  render() {
     return (
       <div>
         <div className="flex flex-col md:flex-row justify-center gap-1 my-4">

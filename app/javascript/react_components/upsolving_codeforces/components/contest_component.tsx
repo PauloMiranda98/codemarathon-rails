@@ -3,12 +3,12 @@ import { Contest } from "../models/contest";
 import { ProblemComponent } from "./problem_compoent";
 
 export class ContestComponent extends React.Component<Contest> {
-  getSubtitle(members: Array<string>) : string {
-    if (members.length == 1){
+  getSubtitle(members: Array<string>): string {
+    if (members.length == 1) {
       return "Individual: " + members[0];
     } else {
       return "Em equipe: " + members.join(", ");
-    }  
+    }
   }
 
   render() {

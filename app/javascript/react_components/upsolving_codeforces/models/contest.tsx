@@ -8,9 +8,9 @@ export type Contest = {
 }
 
 export enum ParticipantType {
-  CONTESTANT = "CONTESTANT", 
-  PRACTICE = "PRACTICE", 
-  VIRTUAL = "VIRTUAL", 
+  CONTESTANT = "CONTESTANT",
+  PRACTICE = "PRACTICE",
+  VIRTUAL = "VIRTUAL",
   MANAGER = "MANAGER",
   OUT_OF_COMPETITION = "OUT_OF_COMPETITION",
 }

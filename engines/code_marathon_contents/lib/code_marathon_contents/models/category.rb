@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module CodeMarathonContents::Models
   class Category
     attr_accessor :name, :slug, :image, :subjects
@@ -8,7 +10,7 @@ module CodeMarathonContents::Models
       @name = hash[:name]
       @slug = hash[:slug]
       @image = hash[:image]
-      
+
       @subjects = hash[:subjects].map do |subject|
         CodeMarathonContents::Models::Subject.new(subject)
       end
