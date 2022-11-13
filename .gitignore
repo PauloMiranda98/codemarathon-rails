@@ -38,3 +38,4 @@
 
 /node_modules
 /config/env_variables.yml
+/coverage

@@ -85,6 +85,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem 'simplecov'
 end
 
 gem 'code_marathon_contents', path: 'engines/code_marathon_contents'
