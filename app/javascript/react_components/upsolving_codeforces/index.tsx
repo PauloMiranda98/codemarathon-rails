@@ -3,6 +3,9 @@ import * as ReactDOM from "react-dom/client";
 import { CodeforcesApi } from "./codeforces_api";
 
 import { ContestComponent } from "./components/contest_component";
+import { ContestLegendComponent } from "./components/contest_legend_component";
+import { PaginationComponent } from "./components/pagination_component";
+
 import { Contest } from "./models/contest";
 import { ContestFactory } from "./factories/contest_factory";
 
@@ -102,9 +105,17 @@ class App extends React.Component<{}, AppState> {
 
   updateContestList = (pageNumber: number, contestIdList: Array<number>) => {
     const currentContestIdList = this.paginate(contestIdList, pageNumber, this.state.pageSize);
-    
+    const temporaryContestId = currentContestIdList.map((contestId: number) => {
+      return ContestFactory.createContest(
+        contestId,
+        `Carregando contest ${contestId} ...`,
+        [],
+        []
+      );
+    });
+
     this.setState({
-      contestList: [],
+      contestList: temporaryContestId,
       contestListSize: currentContestIdList.length
     })
 
@@ -113,9 +124,16 @@ class App extends React.Component<{}, AppState> {
         .then((data: any) => {
           let contest = ContestFactory.createContestByContestStandingsJson(data.result);
 
-          this.setState((prevState: AppState) => ({
-            contestList: [...prevState.contestList, contest]
-          }));
+          this.setState((prevState: AppState) => {
+            let contestList = prevState.contestList;
+            let index = contestList.findIndex((item) => item.contestId === contestId);
+
+            if (index !== -1) {
+              contestList[index] = contest;
+            }
+
+            return {contestList: contestList};
+          });
         });
       });
   }
@@ -135,33 +153,7 @@ class App extends React.Component<{}, AppState> {
     return array.slice(start, end);
   }
 
-  getLegends = (hasContets: boolean) => {
-    if(hasContets)
-      return (
-        <div>
-          <div className="flex flex-col md:flex-row justify-center gap-1 my-4">
-            <span className="bg-gray-700 text-white text-sm font-medium mr-2 px-2.5 py-0.5 rounded ">
-              Não foi tentado
-            </span>
-            <span className="bg-red-700 text-white text-sm font-medium mr-2 px-2.5 py-0.5 rounded ">
-              Foi tentado mas não foi resolvido
-            </span>
-            <span className="bg-green-700 text-white text-sm font-medium mr-2 px-2.5 py-0.5 rounded ">
-            Resolvido durante a competição
-            </span>
-            <span className="bg-blue-700 text-white text-sm font-medium mr-2 px-2.5 py-0.5 rounded ">
-              Resolvido após a competição
-            </span>
-          </div>
-          <div>
-          </div>
-        </div>
-      )
-    else
-      return null;
-  }
-
-  handleChange = (e: React.ChangeEvent<HTMLInputElement>, key: string): void => {
+  handleParticipantTypeChange = (e: React.ChangeEvent<HTMLInputElement>, key: string): void => {
     this.setState((prevState: AppState) => {
       let participantType = prevState.participantTypeInput;
       participantType[key] = e.target.checked;
@@ -179,7 +171,7 @@ class App extends React.Component<{}, AppState> {
             Object.keys(this.state.participantTypeInput).map((key) => (
               <li className="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
                 <div className="flex items-center pl-3">
-                  <input id={key} type="checkbox" checked={this.state.participantTypeInput[key]} onChange={(e) => this.handleChange(e, key)} className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"/>
+                  <input id={key} type="checkbox" checked={this.state.participantTypeInput[key]} onChange={(e) => this.handleParticipantTypeChange(e, key)} className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"/>
                   <label htmlFor={key} className="py-3 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-300">{key}</label>
                 </div>
               </li>
@@ -190,83 +182,6 @@ class App extends React.Component<{}, AppState> {
     );
   }
 
-  progressBar = () => {
-    if(this.state.contestListSize == 0)
-      return null;
-    
-    const percetage = (this.state.contestList.length*100) / this.state.contestListSize
-
-    return (
-      <div className="my-1 w-full bg-gray-200 rounded-full dark:bg-gray-700">
-        <div className="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full" style={{width: `${percetage}%`}}>
-          {percetage > 15 ? `${percetage}%` : "..."}
-        </div>
-      </div>
-    );
-  }
-
-  loadPagination = () => {
-    if(this.state.totalPages <= 1)
-      return null;
-    const currentPage = this.state.currentPage;
-
-    let pages: Array<number> = [];
-    if(this.state.totalPages <= 8){
-      for(let i = 1; i <= this.state.totalPages; i++)
-        pages.push(i);
-    } else {
-      pages = pages.concat([1, 2]);
-
-      if(currentPage - 1 >= 4)
-        pages.push(-1);
-      
-      for(let i = currentPage-1; i <= currentPage + 1; i++)
-        if(i > 2 && i < this.state.totalPages - 1)
-          pages.push(i);
-
-      if(currentPage + 1 < this.state.totalPages - 2)
-        pages.push(-1);
-  
-      pages = pages.concat([this.state.totalPages - 1, this.state.totalPages]);
-    }
-
-    return (
-      <nav>
-        <ul className="inline-flex -space-x-px">
-          <li>
-            <button disabled={currentPage == 1} onClick={() => this.onPageChange(currentPage - 1)} className="py-2 px-3 ml-0 leading-tight text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Voltar</button>
-          </li>
-          {
-            pages.map((page: number): JSX.Element => {
-              if(page == -1){
-                return (
-                  <li>
-                    <button disabled className="py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400">...</button>
-                  </li>
-                )
-              }else if (page == this.state.currentPage){
-                return(
-                  <li>
-                    <button aria-current="page" disabled={currentPage == 1} className="py-2 px-3 leading-tight text-blue-600 bg-blue-50 border border-gray-300 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">{page}</button>
-                  </li>
-                )
-              }else{
-                return(
-                  <li>
-                    <button onClick={() => this.onPageChange(page)} className="py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">{page}</button>
-                  </li>
-                )  
-              }
-            })
-          }
-          <li>
-            <button disabled={currentPage == this.state.totalPages} onClick={() => this.onPageChange(currentPage + 1)} className="py-2 px-3 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Avançar</button>
-          </li>
-        </ul>
-      </nav>
-    );
-  }
-
   onPageChange = (page: number) => {
     this.setState({currentPage: page});
 
@@ -274,6 +189,8 @@ class App extends React.Component<{}, AppState> {
   }
 
   render() {
+    const legends = (this.state.contestList.length > 0) ? <ContestLegendComponent/> : null;
+
     return (
       <div>
         <form onSubmit={this.onSubmit}>
@@ -288,12 +205,10 @@ class App extends React.Component<{}, AppState> {
             </button>
           </div>
 
-          {this.progressBar()}
-
           {this.filter()}
         </form>
 
-        {this.getLegends(this.state.contestList.length > 0)}
+        {legends}
 
         <div>
           {
@@ -307,7 +222,11 @@ class App extends React.Component<{}, AppState> {
         </div>
 
         <div className="flex items-center justify-center text-center">
-          {this.loadPagination()}
+          <PaginationComponent 
+            currentPage={this.state.currentPage} 
+            totalPages={this.state.totalPages}
+            onPageChange={this.onPageChange}
+          />
         </div>
       </div>
     );
