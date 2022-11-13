@@ -4,7 +4,7 @@
       <img class="my-10 h-20 w-auto" src="<%= @image_url %>" alt="Imagem do Conteúdo" />
     </div>
     <div class="p-5">
-      <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><%= @title %></h5>
+      <h5 class="mb-2 text-xl text-center font-bold tracking-tight text-gray-900 dark:text-white"><%= @title %></h5>
       <div class="mb-4">
         <%= render(SubjectCard::FrequencyComponent.new(
           title: "Frequência na OBI",

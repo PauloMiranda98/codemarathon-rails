@@ -1,24 +1,26 @@
-<div class="p-12 bg-slate-50">
-  <%= render(TabsComponent.new) do |tabs| %>
-    <% @categories.each do |category| %>
-      <% tabs.with_tab(
-        title: category.name, 
-        url: category_path(category.slug), 
-        is_active: (category.slug == @category.slug)
-      ) %>
+<div class="min-h-screen bg-gray-50 py-8 flex flex-col relative overflow-hidden lg:py-12">
+  <div class="relative w-full px-5 py-5 bg-white shadow-sm shadow-slate-700/10 ring-1 ring-gray-900/5 md:max-w-3xl md:mx-auto lg:max-w-4xl lg:pt-16 lg:pb-28">
+    <%= render(TabsComponent.new) do |tabs| %>
+      <% @categories.each do |category| %>
+        <% tabs.with_tab(
+          title: category.name, 
+          url: category_path(category.slug), 
+          is_active: (category.slug == @category.slug)
+        ) %>
+      <% end %>
+      <% tabs.with_body do %>
+        <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4 py-4 bg-white rounded-lg md:py-8" id="about" role="tabpanel" aria-labelledby="about-tab">
+          <% @subjects.each do |subject| %>
+            <%= render(SubjectCardComponent.new(
+              title: subject.name,
+              image_url: asset_path(@category.image),
+              obi_frequency: subject.obi_frequency,
+              icpc_frequency: subject.icpc_frequency,
+              link_url: category_subject_path(@category.slug, subject.slug)
+            ))%>
+          <% end %>
+        </div>
+      <% end %>
     <% end %>
-    <% tabs.with_body do %>
-      <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4 p-4 bg-white rounded-lg md:p-8 dark:bg-gray-800" id="about" role="tabpanel" aria-labelledby="about-tab">
-        <% @subjects.each do |subject| %>
-          <%= render(SubjectCardComponent.new(
-            title: subject.name,
-            image_url: asset_path(@category.image),
-            obi_frequency: subject.obi_frequency,
-            icpc_frequency: subject.icpc_frequency,
-            link_url: category_subject_path(@category.slug, subject.slug)
-          ))%>
-        <% end %>
-      </div>
-    <% end %>
-  <% end %>
+  </div>
 </div>
