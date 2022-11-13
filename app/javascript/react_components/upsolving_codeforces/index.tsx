@@ -182,6 +182,15 @@ class App extends React.Component<{}, AppState> {
     );
   }
 
+  codeforceApiLimitationAlert = () => {
+    return (
+      <div className="p-4 my-4 text-sm text-yellow-700 bg-yellow-100 rounded-lg dark:bg-yellow-200 dark:text-yellow-800" role="alert">
+        A página pode demorar para carregar devido a uma limitação da API do Codeforces. 
+        Só é possível fazer uma requisição a cada 2 segundos :(
+      </div>
+    );
+  }
+
   onPageChange = (page: number) => {
     this.setState({currentPage: page});
 
@@ -189,7 +198,7 @@ class App extends React.Component<{}, AppState> {
   }
 
   render() {
-    const legends = (this.state.contestList.length > 0) ? <ContestLegendComponent/> : null;
+    const helpers = (this.state.contestList.length > 0) ? <ContestLegendComponent/> : this.codeforceApiLimitationAlert();
 
     return (
       <div>
@@ -208,7 +217,7 @@ class App extends React.Component<{}, AppState> {
           {this.filter()}
         </form>
 
-        {legends}
+        {helpers}
 
         <div>
           {
