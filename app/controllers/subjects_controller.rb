@@ -6,14 +6,16 @@ class SubjectsController < ApplicationController
   end
 
   def show
-    @category = CodeMarathonContents::Api::Categories.find(slug: params[:category_id])
+    @category = CodeMarathonContents::Api::Categories.find(
+      slug: params[:category_id]
+    )
     @subject = CodeMarathonContents::Api::Subjects.find(
       category_slug: params[:category_id],
       subject_slug: params[:id]
     )
     @content = CodeMarathonContents::Api::Contents.find(
-      category_slug: "introducao",
-      subject_slug: "como-estudar-para-maratona-de-programacao"
+      category_slug: @category.slug,
+      subject_slug: @subject.slug
     )
   end
 end
