@@ -52,6 +52,12 @@
         "slug": "exponenciacao-rapida",
         "obi_frequency": 2,
         "icpc_frequency": 2
+      },
+      {
+        "name": "Euclides Estendido e Equações Diofantinas",
+        "slug": "euclides-estendido-e-equacoes-diofantinas",
+        "obi_frequency": 1,
+        "icpc_frequency": 2
       }
     ]
   },
