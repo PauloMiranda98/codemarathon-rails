@@ -25,20 +25,60 @@ class MarkdownWithLatexComponent < ViewComponent::Base
     end
 
     def pre_customization(text)
-      text
+      text.gsub("\\$", "<dollar>")
     end
 
     def pos_customization(text)
       # Add Code Highlighting
-      text = text.gsub(
-        '<pre><code class="cpp">',
-        '<pre><code class="language-cpp rounded-lg shadow-lg w-full text-sm">'
-      )
+      text = add_code_highlighting(text, "cpp")
+      text = add_code_highlighting(text, "python")
+      text = add_code_highlighting(text, "java")
 
       # Add LaTeX
-      text = text.gsub("<tex>", '<span class="inline-latex">')
-      text = text.gsub("</tex>", "</span>")
-      text = text.gsub("<TEX>", '<span class="block-latex">')
-      text.gsub("</TEX>", "</span>")
+      text = add_block_latex(text)
+      text = add_inline_latex(text)
+
+      # Add Dollar
+      add_dollar_simbol(text)
+    end
+
+    def add_code_highlighting(text, language)
+      text.gsub(
+        "<pre><code class=\"#{language}\">",
+        "<pre><code class=\"language-#{language} rounded-lg shadow-lg w-full text-sm\">"
+      )
+    end
+
+    def add_block_latex(text)
+      is_open = false
+
+      text.gsub("$$") do
+        is_open = !is_open
+
+        if is_open
+          "<span class=\"block-latex\">"
+        else
+          "</span>"
+        end
+      end
+    end
+
+    def add_inline_latex(text)
+      is_open = false
+
+      text.gsub("$") do
+        is_open = !is_open
+
+        if is_open
+          "<span class=\"inline-latex\">"
+        else
+          "</span>"
+        end
+      end
+    end
+
+    def add_dollar_simbol(text)
+      text = text.gsub("<dollar>", "$")
+      text.gsub("&lt;dollar&gt;", "$")
     end
 end

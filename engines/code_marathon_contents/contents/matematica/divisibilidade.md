@@ -1,71 +1,73 @@
 # Divisibilidade
 
+## Vídeos sobre o assunto
+
 [![Video Sobre Divisibilidade](https://img.youtube.com/vi/FM3_72brIf8/0.jpg)](https://www.youtube.com/watch?v=FM3_72brIf8)
 
 > Esse texto não é uma alternativa ao vídeo mas sim uma revisão do vídeo.
 
-Durante os estudos da maratona é recorrente a utilização de propriedades de divisibilidade. O principal foco deste tutorial é abordar o resto resultante da divisão inteira entre dois números. Ao fazer uma divisão inteira entre <tex>N</tex> e <tex>d</tex>, temos:
+Durante os estudos da maratona é recorrente a utilização de propriedades de divisibilidade. O principal foco deste tutorial é abordar o resto resultante da divisão inteira entre dois números. Ao fazer uma divisão inteira entre $N$ e $d$, temos:
 
-<TEX> N = q \cdot d + r </TEX>
+$$ N = q \cdot d + r $$
 
-Onde, <tex>0 \le r < |d|</tex>. 
+Onde, $0 \le r < |d|$. 
 
 ## Propriedade e Definições
 
-- **Definição 1**: dado dois inteiros <tex>a</tex> e <tex>b</tex>, dizemos que <tex>a</tex> divide <tex>b</tex>, usando a simbologia <tex>a | b</tex>, sse <tex>b</tex> pode ser escrito como sendo um produto de <tex>a</tex> com uma constante inteira. Além disso, sabemos que nesse caso o resto da divisão inteira é igual a 0.
+- **Definição 1**: dado dois inteiros $a$ e $b$, dizemos que $a$ divide $b$, usando a simbologia $a | b$, sse $b$ pode ser escrito como sendo um produto de $a$ com uma constante inteira. Além disso, sabemos que nesse caso o resto da divisão inteira é igual a 0.
 
-<TEX> a | b  \leftrightarrow b = a \cdot q</TEX>
+$$ a | b  \leftrightarrow b = a \cdot q$$
 
-- **Propriedade 1**: se <tex>a | b</tex> e <tex>b | c</tex> então <tex>a | c</tex>.
+- **Propriedade 1**: se $a | b$ e $b | c$ então $a | c$.
 > Prova:
 > 
-> se <tex>a|b</tex> então <tex>b = a \cdot q_1</tex>
+> se $a|b$ então $b = a \cdot q_1$
 > 
-> se <tex>b|c</tex> então <tex>c = b \cdot q_2</tex> 
+> se $b|c$ então $c = b \cdot q_2$ 
 >
 > Logo, juntando as duas equações, temos: 
-<tex>c = a \cdot (q_1 \cdot q_2)</tex>, que implica em <tex>a | c</tex>.
+$c = a \cdot (q_1 \cdot q_2)$, que implica em $a | c$.
 
-- **Propriedade 2**: se <tex>a | b</tex> então <tex>a | (b \cdot c)</tex>.
+- **Propriedade 2**: se $a | b$ então $a | (b \cdot c)$.
 > Prova:
 > 
-> se <tex>a|b</tex> então <tex>b = a \cdot q</tex>
+> se $a|b$ então $b = a \cdot q$
 > 
-> Multiplicando os dois lados por c, temos: <tex>b \cdot c = a \cdot (q \cdot c)</tex>, logo <tex>a | (b \cdot c)</tex>.
+> Multiplicando os dois lados por c, temos: $b \cdot c = a \cdot (q \cdot c)$, logo $a | (b \cdot c)$.
 
-- **Propriedade 3**: se <tex>a | b</tex> e <tex>a | c</tex> então <tex>a | (b+c)</tex>.
+- **Propriedade 3**: se $a | b$ e $a | c$ então $a | (b+c)$.
 > Prova:
 > 
-> se <tex>a|b</tex> então <tex>b = a \cdot q_1</tex>
+> se $a|b$ então $b = a \cdot q_1$
 > 
-> se <tex>a|c</tex> então <tex>c = a \cdot q_2</tex> 
+> se $a|c$ então $c = a \cdot q_2$ 
 >
 > Logo, juntando as duas equações, temos: 
-<tex>b + c = a (q_1 + q_2)</tex>, que implica em <tex>a | (b + c)</tex>.
+$b + c = a (q_1 + q_2)$, que implica em $a | (b + c)$.
 
 - **Definição 2**: a mod n é o resto da divisão inteira de a por n. Também é comum usar a % n. 
-- **Propriedade 4**: se <tex>a \; mod \; n = b \; mod \; n</tex> então <tex>n | (a - b)</tex>.
+- **Propriedade 4**: se $a \; mod \; n = b \; mod \; n$ então $n | (a - b)$.
 > Prova:
 > 
-> Podemos reescrever a como: <tex>a = n \cdot q_1 + r</tex>
+> Podemos reescrever a como: $a = n \cdot q_1 + r$
 > 
-> Podemos reescrever b como: <tex>b = n \cdot q_2 + r</tex> 
+> Podemos reescrever b como: $b = n \cdot q_2 + r$ 
 >
 > Logo, subtraindo a primeira equação pela segundo, temos: 
-<tex>a - b = n \cdot (q_1 - q_2)</tex>, que implica em <tex>n | (a - b)</tex>.
+$a - b = n \cdot (q_1 - q_2)$, que implica em $n | (a - b)$.
 
 - **Definição 3**: Vamos definir congruência modular, da seguinte forma:
 
-<TEX> a \equiv b \; mod \; n \leftrightarrow  n | (a - b)</TEX>
+$$ a \equiv b \; mod \; n \leftrightarrow  n | (a - b)$$
 
 Além disso, podemos afirmar:
 
-<TEX> a \equiv b \; mod \; n \leftrightarrow  a \; mod \; n = b \;mod \; n</TEX>
+$$ a \equiv b \; mod \; n \leftrightarrow  a \; mod \; n = b \;mod \; n$$
 
 ## Problemas
 Dado um número inteiro N, diga se ele é divisível por D.
 
-### Resposta para <tex>N <= 10^9</tex>
+### Resposta para $N <= 10^9$
 Usando o operador % do C++.
 
 ```cpp
@@ -84,9 +86,9 @@ int main() {
 }
 ```
 
-### Resposta para qualquer <tex>N</tex> e para <tex>D \in \{2, 3, 5\}</tex>
+### Resposta para qualquer $N$ e para $D \in \{2, 3, 5\}$
 
-Usando a string para conseguir ler valores maiores que <tex>10^{18}</tex> e aplicando propriedade de divisibilidade do 2, 3 e 5.
+Usando a string para conseguir ler valores maiores que $10^{18}$ e aplicando propriedade de divisibilidade do 2, 3 e 5.
 
 ```cpp
 #include <bits/stdc++.h>
@@ -120,7 +122,7 @@ int main() {
 }
 ```
 
-### Resposta para qualquer <tex>N</tex> e <tex>D</tex>
+### Resposta para qualquer $N$ e $D$
 Usando propriedade da aritmética modular mostrada no vídeo acima.
 
 ```cpp
