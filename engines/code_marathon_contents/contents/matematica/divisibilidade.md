@@ -157,5 +157,6 @@ int main() {
 - [Critérios de Divisibilidade 2](https://neps.academy/br/exercise/263)
 - [Critérios de Divisibilidade 3](https://neps.academy/br/exercise/272)
 
-## Matéria complementar
-[Divisibilidade - Matemática Computacional - Neps Academy](https://neps.academy/br/course/matematica-computacional-(codcad)/lesson/divisibilidade)
+## Material complementar
+
+- [Divisibilidade - Matemática Computacional - Neps Academy](https://neps.academy/br/course/matematica-computacional-(codcad)/lesson/divisibilidade)
