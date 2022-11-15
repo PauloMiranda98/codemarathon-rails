@@ -42,6 +42,12 @@
         "icpc_frequency": 3
       },
       {
+        "name": "Manipulação de Bits",
+        "slug": "manipulacao-de-bits",
+        "obi_frequency": 3,
+        "icpc_frequency": 4
+      },
+      {
         "name": "Exponenciação Rápida",
         "slug": "exponenciacao-rapida",
         "obi_frequency": 2,
