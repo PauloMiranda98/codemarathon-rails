@@ -5,7 +5,7 @@ module MarkdownWithLatex
     include ActionView::Helpers::AssetTagHelper
 
     def image(link, title, alt_text)
-      image_tag(formated_link(link), title:, alt: alt_text)
+      image_tag(formated_link(link), title:, alt: alt_text, class: "w-full")
     end
 
     def formated_link(link)
