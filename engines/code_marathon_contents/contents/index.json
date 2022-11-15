@@ -22,6 +22,12 @@
         "slug": "divisibilidade",
         "obi_frequency": 4,
         "icpc_frequency": 4
+      },
+      {
+        "name": "MDC e MMC",
+        "slug": "mdc-e-mmc",
+        "obi_frequency": 3,
+        "icpc_frequency": 3
       }
     ]
   },
