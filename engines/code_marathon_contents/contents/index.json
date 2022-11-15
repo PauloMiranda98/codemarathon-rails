@@ -58,6 +58,18 @@
         "slug": "euclides-estendido-e-equacoes-diofantinas",
         "obi_frequency": 1,
         "icpc_frequency": 2
+      },
+      {
+        "name": "Recorrencia Linear",
+        "slug": "recorrencia-linear",
+        "obi_frequency": 2,
+        "icpc_frequency": 2
+      },
+      {
+        "name": "Transformada Rápida de Fourier (FFT)",
+        "slug": "transformada-rapida-de-fourier",
+        "obi_frequency": 0,
+        "icpc_frequency": 2
       }
     ]
   },
