@@ -34,6 +34,12 @@
         "slug": "mdc-e-mmc",
         "obi_frequency": 3,
         "icpc_frequency": 3
+      },
+      {
+        "name": "Crivo de Eratóstenes",
+        "slug": "crivo-de-eratostenes",
+        "obi_frequency": 2,
+        "icpc_frequency": 3
       }
     ]
   },
