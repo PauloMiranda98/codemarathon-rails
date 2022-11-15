@@ -95,7 +95,14 @@
     "name": "Geometria",
     "slug": "geometria",
     "image": "code_marathon_contents/categories/geometria.png",
-    "subjects": []
+    "subjects": [
+      {
+        "name": "Pontos e Vetores (2D)",
+        "slug": "pontos-e-vetores-2d",
+        "obi_frequency": 2,
+        "icpc_frequency": 3
+      }
+    ]
   },
   {
     "name": "Grafos",
