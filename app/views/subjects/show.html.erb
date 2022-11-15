@@ -7,5 +7,12 @@
   <div class="my-2"></div>
   <div class="relative w-full px-6 py-12 bg-white shadow-xl shadow-slate-700/10 ring-1 ring-gray-900/5 md:max-w-3xl md:mx-auto lg:max-w-4xl lg:pt-16 lg:pb-28">
     <%= render(MarkdownWithLatexComponent.new(text: @content.text))%>
+
+    <div class="flex justify-center">
+      <a href="https://github.com/PauloMiranda98/codemarathon-rails/blob/main/engines/code_marathon_contents/contents/<%= params[:category_id]%>/<%= params[:id] %>.md" target="_blank" class="mt-2 inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
+        Contribuir com esse conteúdo no GitHub
+        <svg class="ml-2 -mr-1 w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path></svg>
+      </a>
+    </div>
   </div>
 </div>
