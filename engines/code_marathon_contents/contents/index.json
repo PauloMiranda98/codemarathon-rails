@@ -24,6 +24,12 @@
         "icpc_frequency": 4
       },
       {
+        "name": "Números Primos",
+        "slug": "numeros-primos",
+        "obi_frequency": 3,
+        "icpc_frequency": 4
+      },
+      {
         "name": "MDC e MMC",
         "slug": "mdc-e-mmc",
         "obi_frequency": 3,
