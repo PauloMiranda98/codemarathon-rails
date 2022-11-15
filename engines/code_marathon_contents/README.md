@@ -4,6 +4,9 @@ Aqui vou descrever algumas dicas de como escreve no codemarathon.
 ## Markdown
 O texto do codemarathon são escritos em markdown. Além disso, é possível inserir fórmulas em LaTex.
 
+### Usando o símbolo $
+Como usamos latex o símbolo $ fica reservado para o latex. Para usa-lo, você pode fazer `\$`.
+
 ## Adicionando código
 O codemarathon aceita 3 linguagens no bloco de código, sendo elas: C++, Java e Python. Para usar, basta fazer:
 
@@ -58,6 +61,3 @@ $$
 
 Isso é a equação do segundo grau!
 ```
-
-### Quebra de linha no LaTex
-No latex para fazer uma quebra de linha, é possível a partir do `\\` mas no Code Marathon é necessário usar o `\\\\`.

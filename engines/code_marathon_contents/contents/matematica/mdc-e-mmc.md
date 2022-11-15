@@ -38,7 +38,7 @@ Podemos encontrar o mdc de uma forma muito eficiente usando o algoritmo de **Euc
 $$
 mdc(a, b) = 
 \begin{Bmatrix}
-a                      & \text{se} \; b = 0 \\\\
+a                      & \text{se} \; b = 0 \\
 mdc(b, \text{a mod b}) & \text{se} \; b \ne 0
 \end{Bmatrix}
 $$

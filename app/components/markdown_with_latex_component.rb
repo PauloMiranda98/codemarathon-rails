@@ -7,7 +7,7 @@ class MarkdownWithLatexComponent < ViewComponent::Base
 
   private
     def obtain_html
-      text = pre_customization(@text)
+      text = pre_render(@text)
 
       renderer = MarkdownWithLatex::MyRenderHtml.new(
         link_attributes: {
@@ -15,70 +15,51 @@ class MarkdownWithLatexComponent < ViewComponent::Base
           rel: "noopener noreferer"
         }
       )
-      markdown = Redcarpet::Markdown.new(renderer,
-                                         autolink: true,
-                                         tables: true,
-                                         fenced_code_blocks: true)
-      text = markdown.render(text)
-
-      pos_customization(text)
+      markdown = Redcarpet::Markdown.new(
+        renderer,
+        autolink: true,
+        tables: true,
+        fenced_code_blocks: true
+      )
+      markdown.render(text)
     end
 
-    def pre_customization(text)
+    def pre_render(text)
+      text = save_dollar_signs(text)
+
+      text = transform_block_latex(text)
+      text = transform_inline_latex(text)
+
+      restore_dollar_signs(text)
+    end
+
+    def save_dollar_signs(text)
       text.gsub("\\$", "<dollar>")
     end
 
-    def pos_customization(text)
-      # Add Code Highlighting
-      text = add_code_highlighting(text, "cpp")
-      text = add_code_highlighting(text, "python")
-      text = add_code_highlighting(text, "java")
-
-      # Add LaTeX
-      text = add_block_latex(text)
-      text = add_inline_latex(text)
-
-      # Add Dollar
-      add_dollar_simbol(text)
+    def transform_block_latex(text)
+      transform_tags(text, "$$", "`(TEX)", "(TEX)`")
     end
 
-    def add_code_highlighting(text, language)
-      text.gsub(
-        "<pre><code class=\"#{language}\">",
-        "<pre><code class=\"language-#{language} rounded-lg shadow-lg w-full text-sm\">"
-      )
+    def transform_inline_latex(text)
+      transform_tags(text, "$", "`(tex)", "(tex)`")
     end
 
-    def add_block_latex(text)
+    def restore_dollar_signs(text)
+      text.gsub("<dollar>", "$")
+    end
+
+    def transform_tags(text, match, open_tag, close_tag)
       is_open = false
 
-      text.gsub("$$") do
+      text.gsub(match) do
         is_open = !is_open
 
         if is_open
-          "<span class=\"block-latex\">"
+          open_tag
         else
-          "</span>"
+          close_tag
         end
       end
-    end
-
-    def add_inline_latex(text)
-      is_open = false
-
-      text.gsub("$") do
-        is_open = !is_open
-
-        if is_open
-          "<span class=\"inline-latex\">"
-        else
-          "</span>"
-        end
-      end
-    end
-
-    def add_dollar_simbol(text)
-      text = text.gsub("<dollar>", "$")
-      text.gsub("&lt;dollar&gt;", "$")
     end
 end
