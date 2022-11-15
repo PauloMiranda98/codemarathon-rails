@@ -40,6 +40,12 @@
         "slug": "crivo-de-eratostenes",
         "obi_frequency": 2,
         "icpc_frequency": 3
+      },
+      {
+        "name": "Exponenciação Rápida",
+        "slug": "exponenciacao-rapida",
+        "obi_frequency": 2,
+        "icpc_frequency": 2
       }
     ]
   },
