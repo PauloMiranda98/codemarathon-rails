@@ -97,8 +97,14 @@
     "image": "code_marathon_contents/categories/geometria.png",
     "subjects": [
       {
-        "name": "Pontos e Vetores (2D)",
-        "slug": "pontos-e-vetores-2d",
+        "name": "Pontos e Vetores",
+        "slug": "pontos-e-vetores",
+        "obi_frequency": 2,
+        "icpc_frequency": 3
+      },
+      {
+        "name": "Produto Escalar e Vetorial",
+        "slug": "produto-escalar-e-vetorial",
         "obi_frequency": 2,
         "icpc_frequency": 3
       }

@@ -1,4 +1,4 @@
-## Pontos e Vetores 2D
+## Pontos e Vetores
 
 No vídeo abaixo mostramos algumas operações com vetores 2D. Além disso, mostramos como calcular o módulo de um vetor e o seu ângulo em relação ao eixo x. 
 
