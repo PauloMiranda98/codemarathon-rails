@@ -5,4 +5,8 @@ class ApplicationController < ActionController::Base
     def config_current_nav(current)
       @current_nav = current
     end
+
+    def not_found(message = "Not Found")
+      raise ActionController::RoutingError.new(message)
+    end
 end

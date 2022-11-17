@@ -13,6 +13,8 @@ class CategoriesController < ApplicationController
 
   def show
     @category = obtain_category(params[:id])
+    return not_found("Categoria não existe") if @category.blank?
+
     @subjects = @category.subjects
   end
 
