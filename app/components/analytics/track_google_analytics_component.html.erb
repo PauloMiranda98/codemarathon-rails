@@ -1,0 +1,16 @@
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=<%= @google_analytics_id %>"></script>
+<script async>
+  window.dataLayer = window.dataLayer || []
+  function gtag() { dataLayer.push(arguments) }
+
+  gtag('js', new Date())
+
+  const trackGoogleAnalytics = (event) => {
+    gtag('config', '<%= @google_analytics_id %>', {
+      'cookie_flags': 'max-age=7200;secure;samesite=none'
+    })
+  }
+
+  document.addEventListener('turbo:load', trackGoogleAnalytics)
+</script>
