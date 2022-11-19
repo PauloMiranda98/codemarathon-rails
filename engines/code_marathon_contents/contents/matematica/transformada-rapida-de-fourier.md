@@ -5,7 +5,9 @@ Devido a complexidade do assunto, no momento, decidi não fazer a parte escrita 
 
 - Code Marathon
 
-[![Video Sobre FFT](https://img.youtube.com/vi/CB-uzeDkiEs/0.jpg)](https://www.youtube.com/watch?v=CB-uzeDkiEs)
+```youtube
+CB-uzeDkiEs
+```
 
 ### Implementação da vídeo aula
 

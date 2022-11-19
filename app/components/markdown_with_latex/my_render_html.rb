@@ -10,18 +10,12 @@ module MarkdownWithLatex
       image_tag(formated_link(link), title:, alt: alt_text, class: "w-full")
     end
 
-    def formated_link(link)
-      return link if link.start_with? "http"
-
-      ActionController::Base.helpers.asset_path(link)
-    end
-
     def block_code(code, lang)
-      "<pre>" \
-        "<code class=\"language-#{sanitize(lang)} rounded-lg shadow-lg w-full text-sm\">" \
-          "#{html_escape(code)}" \
-        "</code>" \
-      "</pre>"
+      if lang == "youtube"
+        build_youtube_link(code.strip)
+      else
+        build_block_code(code, lang)
+      end
     end
 
     def codespan(code)
@@ -33,5 +27,26 @@ module MarkdownWithLatex
         %(<code>#{html_escape(code)}</code>)
       end
     end
+
+    private
+      def formated_link(link)
+        return link if link.start_with? "http"
+
+        ActionController::Base.helpers.asset_path(link)
+      end
+
+      def build_youtube_link(id)
+        "<a href=\"https://www.youtube.com/watch?v=#{id}\" target=\"_blank\" rel=\"noopener noreferer\">" \
+          "<img alt=\"Video no YouTube\" class=\"w-full\" src=\"https://img.youtube.com/vi/#{id}/0.jpg\">" \
+        "</a>"
+      end
+
+      def build_block_code(code, lang)
+        "<pre>" \
+          "<code class=\"language-#{sanitize(lang)} rounded-lg shadow-lg w-full text-sm\">" \
+            "#{html_escape(code)}" \
+          "</code>" \
+        "</pre>"
+      end
   end
 end

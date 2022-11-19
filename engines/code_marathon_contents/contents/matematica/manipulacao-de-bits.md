@@ -5,7 +5,9 @@ Como sabemos, todos os valores são guardados em binário no computador. Por exe
 
 - Code Marathon
 
-[![Video Sobre Divisibilidade](https://img.youtube.com/vi/upNeEIWrw84/0.jpg)](https://www.youtube.com/watch?v=upNeEIWrw84)
+```youtube
+upNeEIWrw84
+```
 
 ## Operações bit-a-bit
 ### AND

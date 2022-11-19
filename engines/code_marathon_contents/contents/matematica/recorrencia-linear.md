@@ -30,7 +30,9 @@ $$
 
 ### Code Marathon
 
-[![Video Sobre Recorrência Linear do Code Marathon](https://img.youtube.com/vi/8vFl3icrdZw/0.jpg)](https://www.youtube.com/watch?v=8vFl3icrdZw)
+```youtube
+8vFl3icrdZw
+```
 
 #### Código da Exponenciação de Matrizes
 

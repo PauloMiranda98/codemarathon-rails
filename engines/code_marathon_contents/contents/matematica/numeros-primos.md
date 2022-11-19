@@ -4,7 +4,9 @@
 
 - Code Marathon
 
-[![Video Sobre Números Primos](https://img.youtube.com/vi/GIyHJtX9wpM/0.jpg)](https://www.youtube.com/watch?v=GIyHJtX9wpM)
+```youtube
+GIyHJtX9wpM
+```
 
 ## Definição
 Dizemos que um número $n \gt 1$ é primo se e somente se $n$ é divisível apenas por $1$ e $n$. Então para verificar se um número é primo basta verificar se os números entre $2$ e $n-1$ dividem $n$. Se algum número conseguir dividir $n$ então a resposta é não, caso contrário é sim. Com isso, podemos desenvolver o primeiro algoritmo.

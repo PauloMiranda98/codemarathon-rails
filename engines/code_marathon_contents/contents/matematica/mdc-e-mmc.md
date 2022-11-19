@@ -2,7 +2,9 @@
 
 ## Vídeos sobre o assunto
 
-[![Video Sobre MDC e MMC](https://img.youtube.com/vi/M7QmSzSJtbk/0.jpg)](https://www.youtube.com/watch?v=M7QmSzSJtbk)
+```youtube
+M7QmSzSJtbk
+```
 
 ## Definições
 O **máximo divisor comum** entre $a$ e $b$ é o maior inteiro $x \ge 1$ que $x | a$ e $x | b$. 

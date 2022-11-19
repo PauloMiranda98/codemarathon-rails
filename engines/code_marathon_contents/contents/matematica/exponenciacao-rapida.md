@@ -6,7 +6,9 @@
 
 - Code Marathon
 
-[![Video Sobre Divisibilidade](https://img.youtube.com/vi/hlYoB9phTfc/0.jpg)](https://www.youtube.com/watch?v=hlYoB9phTfc)
+```youtube
+hlYoB9phTfc
+```
 
 ## Solução O(n)
 Podemos simplesmente executar a multiplicação $n$ vezes.

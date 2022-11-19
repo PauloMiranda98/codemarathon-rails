@@ -7,12 +7,15 @@ No vídeo abaixo mostramos algumas operações com vetores 2D. Além disso, most
 ### Code Marathon
 
 #### Teoria
-[![Video Sobre Pontos e Vetores - Teoria](https://img.youtube.com/vi/cD4V9TtF9EQ/0.jpg)](https://www.youtube.com/watch?v=cD4V9TtF9EQ)
 
+```youtube
+cD4V9TtF9EQ
+```
 #### Prática
 
-[![Video Sobre Pontos e Vetores - Pratica](https://img.youtube.com/vi/SJ_E_k3NkSw/0.jpg)](https://www.youtube.com/watch?v=SJ_E_k3NkSw)
-
+```youtube
+SJ_E_k3NkSw
+```
 #### Implementação em C++
 
 ```cpp

@@ -8,11 +8,15 @@ Neste vídeo mostramos duas operações importantes: produto vetorial e escalar.
 
 #### Teoria
 
-[![Video Sobre Produto Escalar e Vetorial - Teoria](https://img.youtube.com/vi/ghkq3J8lGKk/0.jpg)](https://www.youtube.com/watch?v=ghkq3J8lGKk)
+```youtube
+ghkq3J8lGKk
+```
 
 #### Prática
 
-[![Video Sobre Produto Escalar e Vetorial - Teoria](https://img.youtube.com/vi/I3-ycXXUCfA/0.jpg)](https://www.youtube.com/watch?v=I3-ycXXUCfA)
+```youtube
+I3-ycXXUCfA
+```
 
 #### Implementação em C++
 

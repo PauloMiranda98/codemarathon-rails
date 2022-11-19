@@ -7,7 +7,9 @@ $$a \cdot x + b \cdot y = mdc(a, b)$$
 
 ## Vídeos do conteúdo
 
-[![Video Sobre Euclides Estendido](https://img.youtube.com/vi/ctEMoBkZBQc/0.jpg)](https://www.youtube.com/watch?v=ctEMoBkZBQc)
+```youtube
+ctEMoBkZBQc
+```
 
 ## Algoritmo de Euclides
 Antes de falar da versão estendida, vamos relembrar a versão simples do algoritmo de Euclides. Temos que o MDC entre $a$ e $b$ pode ser encontrado com a seguinte função:

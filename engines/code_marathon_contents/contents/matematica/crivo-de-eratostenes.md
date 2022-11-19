@@ -4,7 +4,9 @@
 
 - Code Marathon
 
-[![Video Sobre Crivo de Eratóstenes](https://img.youtube.com/vi/UGNbq3KeoKM/0.jpg)](https://www.youtube.com/watch?v=UGNbq3KeoKM)
+```youtube
+UGNbq3KeoKM
+```
 
 ## Problema
 Dado um valor inteiro $N$ queremos saber quais valores entre $1$ e $N$ são primos.

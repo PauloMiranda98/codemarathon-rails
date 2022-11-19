@@ -2,7 +2,9 @@
 
 ## Vídeos sobre o assunto
 
-[![Video Sobre Divisibilidade](https://img.youtube.com/vi/FM3_72brIf8/0.jpg)](https://www.youtube.com/watch?v=FM3_72brIf8)
+```youtube
+FM3_72brIf8
+```
 
 > Esse texto não é uma alternativa ao vídeo mas sim uma revisão do vídeo.
 
