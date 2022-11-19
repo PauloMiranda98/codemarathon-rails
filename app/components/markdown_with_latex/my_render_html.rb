@@ -3,6 +3,8 @@
 module MarkdownWithLatex
   class MyRenderHtml < Redcarpet::Render::HTML
     include ActionView::Helpers::AssetTagHelper
+    include ActionView::Helpers::SanitizeHelper
+    include ERB::Util
 
     def image(link, title, alt_text)
       image_tag(formated_link(link), title:, alt: alt_text, class: "w-full")
@@ -15,16 +17,20 @@ module MarkdownWithLatex
     end
 
     def block_code(code, lang)
-      %(<pre><code class="language-#{lang} rounded-lg shadow-lg w-full text-sm">#{code}</code></pre>)
+      "<pre>" \
+        "<code class=\"language-#{sanitize(lang)} rounded-lg shadow-lg w-full text-sm\">" \
+          "#{html_escape(code)}" \
+        "</code>" \
+      "</pre>"
     end
 
     def codespan(code)
       if code.start_with?("(TEX)") && code.end_with?("(TEX)")
-        %(<span class="block-latex">#{code[5..-6]}</span>)
+        %(<span class="block-latex">#{html_escape(code[5..-6])}</span>)
       elsif code.start_with?("(tex)") && code.end_with?("(tex)")
-        %(<span class="inline-latex">#{code[5..-6]}</span>)
+        %(<span class="inline-latex">#{html_escape(code[5..-6])}</span>)
       else
-        %(<code>#{code}</code>)
+        %(<code>#{html_escape(code)}</code>)
       end
     end
   end
