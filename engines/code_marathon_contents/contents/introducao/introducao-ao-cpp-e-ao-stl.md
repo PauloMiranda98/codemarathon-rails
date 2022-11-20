@@ -48,7 +48,21 @@ Assuntos: estruturas de repetição (for, while e do while) e arrays estáticos 
 7HhQlxMwwLE
 ```
 
-### UFMG
+#### A Famosa STL - 🎈 GEMA Aula #5 🎈
+
+Essa é uma aula bem expositiva falando das principais estruturas e funções disponíveis no STL, focando na maratona.
+
+```youtube
+J9xSi5_RTGg
+```
+
+#### A Famosa STL (Parte 2) - 🎈 GEMA Aula #6 🎈
+
+```youtube
+dwLGhv9dL4E
+```
+
+### Maratona UFMG
 
 #### Aula 1 - STL e C++
 
