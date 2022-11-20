@@ -15,6 +15,12 @@
         "slug": "introducao-ao-cpp-e-ao-stl",
         "obi_frequency": 4,
         "icpc_frequency": 4
+      },
+      {
+        "name": "Funções e Recursão",
+        "slug": "funcoes-e-recursao",
+        "obi_frequency": 4,
+        "icpc_frequency": 4
       }
     ]
   },

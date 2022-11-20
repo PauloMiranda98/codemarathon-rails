@@ -1,6 +1,6 @@
 # Introdução ao C++ e ao STL
 
-Nesse artigos vamos apresentar vários conteúdos produzidos pela comunidade brasileira.
+Nesse artigo vamos apresentar vários conteúdos produzidos pela comunidade brasileira.
 
 ## Conteúdos Escritos
 
