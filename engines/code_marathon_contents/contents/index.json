@@ -9,6 +9,12 @@
         "slug": "como-estudar-para-maratona-de-programacao",
         "obi_frequency": 0,
         "icpc_frequency": 4
+      },
+      {
+        "name": "Introdução ao C++ e ao STL",
+        "slug": "introducao-ao-cpp-e-ao-stl",
+        "obi_frequency": 4,
+        "icpc_frequency": 4
       }
     ]
   },
