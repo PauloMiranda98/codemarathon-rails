@@ -21,6 +21,12 @@
         "slug": "funcoes-e-recursao",
         "obi_frequency": 4,
         "icpc_frequency": 4
+      },
+      {
+        "name": "Complexidade",
+        "slug": "complexidade",
+        "obi_frequency": 4,
+        "icpc_frequency": 4
       }
     ]
   },
