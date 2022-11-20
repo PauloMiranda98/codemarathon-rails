@@ -1,4 +1,4 @@
-# Code Marathon ![Testes](https://github.com/PauloMiranda98/codemarathon-rails/actions/workflows/rubyonrails.yml/badge.svg?branch=main&job=testw)
+# Code Marathon ![Testes](https://github.com/PauloMiranda98/codemarathon-rails/actions/workflows/rubyonrails.yml/badge.svg?branch=main)
 
 
 O Code Marathon é um sistema onde pessoas interessadas por Maratona de Programação e pela Olimpíada Brasileira de Informática podem aprender os conteúdos recorrentes nessas competições.
