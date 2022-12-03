@@ -59,6 +59,9 @@ gem "redcarpet"
 # Faraday is an HTTP client library abstraction layer that provides a common interface over many adapters
 gem "faraday"
 
+# Ruby wrapper for Terser JavaScript compressor.
+gem "terser"
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
