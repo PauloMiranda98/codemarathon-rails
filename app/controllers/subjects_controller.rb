@@ -22,5 +22,12 @@ class SubjectsController < ApplicationController
       subject_slug: @subject.slug
     )
     return not_found("Conteúdo não foi escrito") if @content.nil?
+    
+    config_header(@category, @subject, @content)
+  end
+
+  def config_header(category, subject, content)
+    config_head_title("#{subject.name} - #{category.name} - Code Marathon")
+    config_head_description("Explicação sobre #{subject.name} em português (pt-BR) produzido pela comunidade Brasileira.")
   end
 end

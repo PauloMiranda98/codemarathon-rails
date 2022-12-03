@@ -5,7 +5,9 @@
       google_analytics_id: ENV["GOOGLE_ANALYTICS_ID"]
     )) %>
 
-    <title>Code Marathon</title>
+    <title><%= @head_title.presence || "Code Marathon" %></title>
+    <meta name="description" content="<%= @head_description %>">
+
     <link rel="icon" href="/favicon.png">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
