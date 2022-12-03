@@ -22,7 +22,7 @@ class SubjectsController < ApplicationController
       subject_slug: @subject.slug
     )
     return not_found("Conteúdo não foi escrito") if @content.nil?
-    
+
     config_header(@category, @subject, @content)
   end
 
