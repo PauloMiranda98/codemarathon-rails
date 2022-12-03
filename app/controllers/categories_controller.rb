@@ -15,6 +15,8 @@ class CategoriesController < ApplicationController
     @category = obtain_category(params[:id])
     return not_found("Categoria não existe") if @category.blank?
 
+    config_header(@category)
+
     @subjects = @category.subjects
   end
 
@@ -30,5 +32,10 @@ class CategoriesController < ApplicationController
 
     def obtain_category(slug)
       @category = @category_by_slug[slug]
+    end
+
+    def config_header(category)
+      config_head_title("#{category.name} - Code Marathon")
+      config_head_description("Conteúdos sobre o tema #{category.name} em português (pt-BR) produzido pela comunidade Brasileira.")
     end
 end

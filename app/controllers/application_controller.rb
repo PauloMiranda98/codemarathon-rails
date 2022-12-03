@@ -9,4 +9,12 @@ class ApplicationController < ActionController::Base
     def not_found(message = "Not Found")
       raise ActionController::RoutingError.new(message)
     end
+
+    def config_head_title(title)
+      @head_title = title
+    end
+
+    def config_head_description(description)
+      @head_description = description
+    end
 end

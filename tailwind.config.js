@@ -19,6 +19,7 @@ module.exports = {
     './app/javascript/**/*.tsx',
     './app/components/**/*.html.erb',
     './app/components/**/*.rb',
+    './app/components/**/*.js',
     './node_modules/flowbite/**/*.js',
     './node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}'
   ],

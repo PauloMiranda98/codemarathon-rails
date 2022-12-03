@@ -1,17 +1,20 @@
 <!DOCTYPE html>
-<html class="h-full">
+<html class="h-full" lang="pt-BR">
   <head>
     <%= render(Analytics::TrackGoogleAnalyticsComponent.new(
       google_analytics_id: ENV["GOOGLE_ANALYTICS_ID"]
     )) %>
 
-    <title>Code Marathon</title>
+    <title><%= @head_title.presence || "Code Marathon" %></title>
+    <meta name="description" content="<%= @head_description %>">
+
+    <link rel="icon" href="/favicon.png">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
-    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.3/dist/flowbite.min.css" />
+    <%= stylesheet_link_tag "application", data: { turbo_track: :reload } %>
+    <%= javascript_include_tag "application", data: { turbo_track: :reload }, defer: true %>
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.4/dist/flowbite.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/atom-one-dark.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.min.css" integrity="sha384-bYdxxUwYipFNohQlHt0bjN/LCpueqWz13HufFEV1SUatKs1cm4L6fFgCi1jT643X" crossorigin="anonymous">
   </head>
@@ -50,10 +53,9 @@
       <footer class="bg-gray-100 mx-auto w-full max-w-container px-4 sm:px-6 lg:px-8">
         <div class="border-t border-slate-900/5 py-10">
           <img class="mx-auto h-12 w-auto text-slate-900" src="<%= image_path("logo_code_marathon.png") %>" alt="Logo do Code Marathon"/>
-          <p class="mt-5 text-center text-sm leading-6 text-slate-500">Code Marathon ©2022</p>
+          <p class="mt-5 text-center text-sm leading-6 text-slate-700">Code Marathon ©2022</p>
         </div>
       </footer>
     </div>
-    <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
   </body>
 </html>
