@@ -113,6 +113,12 @@
         "slug": "union-find",
         "obi_frequency": 2,
         "icpc_frequency": 2
+      },
+      {
+        "name": "Min/Max Queue",
+        "slug": "min-max-queue",
+        "obi_frequency": 0,
+        "icpc_frequency": 1
       }
     ]
   },
