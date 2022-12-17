@@ -107,6 +107,12 @@
         "slug": "ordered-set",
         "obi_frequency": 0,
         "icpc_frequency": 2
+      },
+      {
+        "name": "Union Find",
+        "slug": "union-find",
+        "obi_frequency": 2,
+        "icpc_frequency": 2
       }
     ]
   },
