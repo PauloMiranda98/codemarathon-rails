@@ -95,7 +95,14 @@
     "name": "Estrutura de Dados",
     "slug": "estrutura-de-dados",
     "image": "code_marathon_contents/categories/estrutura-de-dados.png",
-    "subjects": []
+    "subjects": [
+      {
+        "name": "Bitset",
+        "slug": "bitset",
+        "obi_frequency": 2,
+        "icpc_frequency": 2
+      }
+    ]
   },
   {
     "name": "Técnicas de Programação",
