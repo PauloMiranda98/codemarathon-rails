@@ -119,6 +119,12 @@
         "slug": "min-max-queue",
         "obi_frequency": 0,
         "icpc_frequency": 1
+      },
+      {
+        "name": "Árvore de Segmento",
+        "slug": "arvore-de-segmento",
+        "obi_frequency": 4,
+        "icpc_frequency": 4
       }
     ]
   },
