@@ -101,6 +101,12 @@
         "slug": "bitset",
         "obi_frequency": 2,
         "icpc_frequency": 2
+      },
+      {
+        "name": "Ordered Set",
+        "slug": "ordered-set",
+        "obi_frequency": 0,
+        "icpc_frequency": 2
       }
     ]
   },
