@@ -95,7 +95,38 @@
     "name": "Estrutura de Dados",
     "slug": "estrutura-de-dados",
     "image": "code_marathon_contents/categories/estrutura-de-dados.png",
-    "subjects": []
+    "subjects": [
+      {
+        "name": "Bitset",
+        "slug": "bitset",
+        "obi_frequency": 2,
+        "icpc_frequency": 2
+      },
+      {
+        "name": "Ordered Set",
+        "slug": "ordered-set",
+        "obi_frequency": 0,
+        "icpc_frequency": 2
+      },
+      {
+        "name": "Union Find",
+        "slug": "union-find",
+        "obi_frequency": 2,
+        "icpc_frequency": 2
+      },
+      {
+        "name": "Min/Max Queue",
+        "slug": "min-max-queue",
+        "obi_frequency": 0,
+        "icpc_frequency": 1
+      },
+      {
+        "name": "Árvore de Segmento",
+        "slug": "arvore-de-segmento",
+        "obi_frequency": 4,
+        "icpc_frequency": 4
+      }
+    ]
   },
   {
     "name": "Técnicas de Programação",
