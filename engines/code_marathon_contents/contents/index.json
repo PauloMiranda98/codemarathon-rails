@@ -138,7 +138,14 @@
     "name": "Processamento de Strings",
     "slug": "processamento-de-strings",
     "image": "code_marathon_contents/categories/processamento-de-strings.png",
-    "subjects": []
+    "subjects": [
+      {
+        "name": "KMP",
+        "slug": "kmp",
+        "obi_frequency": 0,
+        "icpc_frequency": 2
+      }
+    ]
   },
   {
     "name": "Geometria",
@@ -163,7 +170,14 @@
     "name": "Grafos",
     "slug": "grafos",
     "image": "code_marathon_contents/categories/grafos.png",
-    "subjects": []
+    "subjects": [
+      {
+        "name": "Heavy-Light Decomposition (HLD)",
+        "slug": "heavy-light-decomposition",
+        "obi_frequency": 0,
+        "icpc_frequency": 1
+      }
+    ]
   },
   {
     "name": "Variados",
