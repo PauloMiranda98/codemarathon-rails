@@ -27,6 +27,12 @@
         "slug": "complexidade",
         "obi_frequency": 4,
         "icpc_frequency": 4
+      },
+      {
+        "name": "Mulheres na Programação Competitiva",
+        "slug": "mulheres-na-programacao-competitiva",
+        "obi_frequency": 4,
+        "icpc_frequency": 4
       }
     ]
   },
@@ -76,6 +82,12 @@
         "slug": "euclides-estendido-e-equacoes-diofantinas",
         "obi_frequency": 1,
         "icpc_frequency": 2
+      },
+      {
+        "name": "Teoria dos Números",
+        "slug": "teoria-dos-numeros",
+        "obi_frequency": 4,
+        "icpc_frequency": 4
       },
       {
         "name": "Recorrencia Linear",
@@ -132,7 +144,26 @@
     "name": "Técnicas de Programação",
     "slug": "tecnicas-de-programacao",
     "image": "code_marathon_contents/categories/tecnicas-de-programacao.png",
-    "subjects": []
+    "subjects": [
+      {
+        "name": "Algoritmo Guloso",
+        "slug": "algoritmo-guloso",
+        "obi_frequency": 4,
+        "icpc_frequency": 4
+      },
+      {
+        "name": "Busca Binária",
+        "slug": "busca-binaria",
+        "obi_frequency": 4,
+        "icpc_frequency": 4
+      },
+      {
+        "name": "Programação Dinâmica",
+        "slug": "programacao-dinamica",
+        "obi_frequency": 4,
+        "icpc_frequency": 4
+      }
+    ]
   },
   {
     "name": "Processamento de Strings",
@@ -172,6 +203,30 @@
     "image": "code_marathon_contents/categories/grafos.png",
     "subjects": [
       {
+        "name": "Introdução a Grafos",
+        "slug": "introducao-a-grafos",
+        "obi_frequency": 4,
+        "icpc_frequency": 4
+      },
+      {
+        "name": "Busca em Largura (BFS)",
+        "slug": "busca-em-largura",
+        "obi_frequency": 4,
+        "icpc_frequency": 4
+      },
+      {
+        "name": "Algoritmo de Dijkstra",
+        "slug": "algoritmo-de-dijkstra",
+        "obi_frequency": 4,
+        "icpc_frequency": 4
+      },
+      {
+        "name": "Algoritmo de Kruskal",
+        "slug": "algoritmo-de-kruskal",
+        "obi_frequency": 2,
+        "icpc_frequency": 2
+      },
+      {
         "name": "Heavy-Light Decomposition (HLD)",
         "slug": "heavy-light-decomposition",
         "obi_frequency": 0,
@@ -183,6 +238,13 @@
     "name": "Variados",
     "slug": "variados",
     "image": "code_marathon_contents/categories/variados.png",
-    "subjects": []
+    "subjects": [
+      {
+        "name": "Stress Test",
+        "slug": "stress-test",
+        "obi_frequency": 1,
+        "icpc_frequency": 1
+      }
+    ]
   }
 ]

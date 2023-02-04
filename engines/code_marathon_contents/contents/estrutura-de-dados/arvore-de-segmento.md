@@ -20,7 +20,7 @@ Provavelmente é a estrutura de dados (fora do STL do C++) mais usada em program
 Descrição do vídeos: na aula apresentamos a árvore de segmentos, uma estrutura de dados muito útil para resolver problemas em ranges. Além disso provamos a complexidade da estrutura, mostramos sua implementação e resolvemos um problema usando a ferramenta.
 
 ```youtube
-NsdgSnDJ9Ec
+OW_nQN-UQhA
 ```
 
 ### MarathonUSP
