@@ -15,3 +15,11 @@ Por algum motivo o áudio dos participantes não foi gravado corretamente. Ative
 ```youtube
 L8mxYASOU2E
 ```
+
+### Giovanna Kobus Conrado
+
+#### Aula 10.1 de Desafios 2 - Heavy-Light Decomposition
+
+```youtube
+RPUSB0eHbi4
+```
