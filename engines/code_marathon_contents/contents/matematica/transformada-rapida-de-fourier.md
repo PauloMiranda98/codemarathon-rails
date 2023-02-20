@@ -1,15 +1,19 @@
 # Transformada Rápida de Fourier (FFT)
-Devido a complexidade do assunto, no momento, decidi não fazer a parte escrita sobre FFT. Talvez eu faça no futuro. Para mais detalhe sobre a implementação, assista o vídeo abaixo.
 
-## Videos do conteúdo
+Nesse artigo vamos apresentar vários conteúdos produzidos pela comunidade brasileira sobre Transformada Rápida de Fourier (FFT).
 
-- Code Marathon
+
+## Conteúdos em vídeo
+
+### Code Marathon
+
+#### Transformada Rápida de Fourier (FFT) - Code Marathon
 
 ```youtube
 CB-uzeDkiEs
 ```
 
-### Implementação da vídeo aula
+#### Implementação da vídeo aula
 
 ```cpp
 #include <bits/stdc++.h>
@@ -79,7 +83,8 @@ vector<long long> multiply(vector<int> a, vector<int> b){
 }
 ```
 
-## Implementação mais eficiente
+#### Implementação mais eficiente
+
 Para melhorar a eficiência podemos implementar a versão iterativa da Transformada Rápida de Fourier. Além disso, implementar o próprio número complexo melhora o tempo de execução. Para mais detallhe, acesse o [CP-Algorithm](https://cp-algorithms.com/algebra/fft.html#toc-tgt-5).
 
 ```cpp
@@ -155,6 +160,14 @@ vector<ll> multiply(vector<int> const& a, vector<int> const& b) {
     result[i] = round(fa[i].a);        
   return result;
 }
+```
+
+### Giovanna Kobus Conrado
+
+#### Aula 14 de Desafios 2 - FFT parte 1
+
+```youtube
+eDQHSQU67t4
 ```
 
 ## Material Complementar

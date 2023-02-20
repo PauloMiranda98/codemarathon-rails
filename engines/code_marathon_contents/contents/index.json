@@ -137,6 +137,12 @@
         "slug": "arvore-de-segmento",
         "obi_frequency": 4,
         "icpc_frequency": 4
+      },
+      {
+        "name": "Árvore de Segmento Persistente",
+        "slug": "arvore-de-segmento-persistente",
+        "obi_frequency": 2,
+        "icpc_frequency": 2
       }
     ]
   },
@@ -158,10 +164,28 @@
         "icpc_frequency": 4
       },
       {
+        "name": "Busca Ternária",
+        "slug": "busca-ternaria",
+        "obi_frequency": 0,
+        "icpc_frequency": 2
+      },
+      {
         "name": "Programação Dinâmica",
         "slug": "programacao-dinamica",
         "obi_frequency": 4,
         "icpc_frequency": 4
+      },
+      {
+        "name": "Otimizações de Programação Dinâmica",
+        "slug": "otimizacoes-de-programacao-dinamica",
+        "obi_frequency": 0,
+        "icpc_frequency": 1
+      },
+      {
+        "name": "Decomposição em Raiz Quadrada",
+        "slug": "decomposicao-em-raiz-quadrada",
+        "obi_frequency": 0,
+        "icpc_frequency": 2
       }
     ]
   },
@@ -174,7 +198,13 @@
         "name": "KMP",
         "slug": "kmp",
         "obi_frequency": 0,
-        "icpc_frequency": 2
+        "icpc_frequency": 3
+      },
+      {
+        "name": "Palindromic Tree",
+        "slug": "palindromic-tree",
+        "obi_frequency": 0,
+        "icpc_frequency": 1
       }
     ]
   },
@@ -194,6 +224,18 @@
         "slug": "produto-escalar-e-vetorial",
         "obi_frequency": 2,
         "icpc_frequency": 3
+      },
+      {
+        "name": "Line Sweep",
+        "slug": "line-sweep",
+        "obi_frequency": 1,
+        "icpc_frequency": 2
+      },
+      {
+        "name": "Dualidade no Plano",
+        "slug": "dualidade-no-plano",
+        "obi_frequency": 0,
+        "icpc_frequency": 1
       }
     ]
   },
@@ -227,10 +269,22 @@
         "icpc_frequency": 2
       },
       {
+        "name": "Centroid Decomposition",
+        "slug": "centroid-decomposition",
+        "obi_frequency": 0,
+        "icpc_frequency": 1
+      },
+      {
         "name": "Heavy-Light Decomposition (HLD)",
         "slug": "heavy-light-decomposition",
         "obi_frequency": 0,
         "icpc_frequency": 1
+      },
+      {
+        "name": "Fluxo Máximo",
+        "slug": "fluxo-maximo",
+        "obi_frequency": 0,
+        "icpc_frequency": 3
       }
     ]
   },
