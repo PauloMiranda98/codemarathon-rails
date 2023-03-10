@@ -97,7 +97,7 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
   gem "simplecov"
-  gem 'simplecov-cobertura'
+  gem "simplecov-cobertura"
 end
 
 gem "code_marathon_contents", path: "engines/code_marathon_contents"
