@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
     end
 
     def not_found(message = "Not Found")
+      # preciso testar
       raise ActionController::RoutingError.new(message)
     end
 
