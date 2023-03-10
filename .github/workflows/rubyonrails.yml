@@ -33,8 +33,6 @@ jobs:
       # Add or replace test runners here
       - name: Run tests
         run: bin/rake
-      - name: teste
-        run: git diff --name-only origin/main
       - name: Code Coverage Report
         run: ruby scripts/check_changed_coverage.rb
       - name: debug
@@ -45,6 +43,8 @@ jobs:
         with:
           recreate: true
           path: code-coverage-results.md
+      - name: teste
+        run: git diff --name-only origin
 
   lint:
     runs-on: ubuntu-latest
