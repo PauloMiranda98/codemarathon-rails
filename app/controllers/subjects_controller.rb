@@ -6,7 +6,6 @@ class SubjectsController < ApplicationController
   end
 
   def show
-    # teste
     @category = CodeMarathonContents::Api::Categories.find(
       slug: params[:category_id]
     )
