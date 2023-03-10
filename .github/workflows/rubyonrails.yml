@@ -44,7 +44,7 @@ jobs:
           recreate: true
           path: code-coverage-results.md
       - name: teste
-        run: git diff --name-only origin
+        run: git diff --name-only origin/${{ github.base_ref }} origin/main
 
   lint:
     runs-on: ubuntu-latest
