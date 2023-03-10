@@ -11,8 +11,8 @@ results_json = JSON.parse(file)
 File.open("./coverage/code-coverage-results.md", "w") do |f|
   f.write "# Cobertura de teste do arquivos alterados \n"
 
-  f.write "| Nome do Arquivo  | Linhas válidas  |  Linha cobertas  | Cobertura  |\n"
-  f.write "|---|---|---|---|\n"
+  f.write "| Nome do Arquivo  | Linhas válidas  |  Linha cobertas  | Cobertura | Avaliação |\n"
+  f.write "|---|---|---|---|---|\n"
 
   changed_files.each do |file_name|
     absolute_path = File.expand_path(file_name)
@@ -31,6 +31,14 @@ File.open("./coverage/code-coverage-results.md", "w") do |f|
       percentage = ((total_coverage.to_f / valid_lines.count) * 100)
     end
 
-    f.write "| #{file_name} | #{valid_lines.count} | #{total_coverage} | #{percentage.round(2)}% |\n"
+    if percentage.round.to_i == 100
+      icon = ":heart:"
+    elsif percentage >= 90
+      icon = ":heavy_check_mark:"
+    else
+      icon = ":x:"
+    end
+
+    f.write "| #{file_name} | #{valid_lines.count} | #{total_coverage} | #{percentage.round(2)}% | #{icon} |\n"
   end
 end
