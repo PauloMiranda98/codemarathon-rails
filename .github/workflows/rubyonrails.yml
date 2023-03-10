@@ -34,21 +34,14 @@ jobs:
       - name: Run tests
         run: bin/rake
       - name: Code Coverage Report
-        uses: irongut/CodeCoverageSummary@v1.3.0
+        uses: clearlyip/code-coverage-report-action@v1.0.0
+        id: code_coverage_report_action
         with:
-          filename: coverage/**/coverage.xml
-          badge: true
-          fail_below_min: true
-          format: markdown
-          hide_branch_rate: false
-          hide_complexity: true
-          indicators: true
-          output: both
-          thresholds: '60 80'
-
+          filename: 'coverage/**/coverage.xml'
+          fail_on_negative_difference: true
       - name: Add Coverage PR Comment
         uses: marocchino/sticky-pull-request-comment@v2
-        if: github.event_name == 'pull_request'
+        if: steps.code_coverage_report_action.outputs.file != '' && github.event_name == 'pull_request' && (success() || failure())
         with:
           recreate: true
           path: code-coverage-results.md
