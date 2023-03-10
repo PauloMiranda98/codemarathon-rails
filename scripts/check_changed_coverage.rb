@@ -9,7 +9,7 @@ file = File.read("./coverage/.resultset.json")
 results_json = JSON.parse(file)
 
 File.open("./coverage/code-coverage-results.md", "w") do |f|
-  f.write "# Cobertura de teste do arquivos alterados \n"
+  f.write "# Cobertura de teste dos arquivos alterados\n"
 
   f.write "| Nome do Arquivo  | Linhas válidas  |  Linha cobertas  | Cobertura | Avaliação |\n"
   f.write "|---|---|---|---|---|\n"
