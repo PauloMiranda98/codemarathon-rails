@@ -1,4 +1,4 @@
-changed_files = `git diff --name-only origin/main origin/${GITHUB_HEAD_REF}`.split("\n")
+changed_files = `git diff --name-only origin/${{ github.base_ref }}..${{ github.sha }}`.split("\n")
 
 File.open("code-coverage-results.md", "w") do |f|
   f.write "# Primeiro Comentário\n"
