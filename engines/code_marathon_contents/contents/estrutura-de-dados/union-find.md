@@ -43,3 +43,22 @@ Descrição do vídeo: na aula apresentamos, pouco a pouco, o raciocínio e otim
 ```youtube
 vhPwdX5vaio
 ```
+
+## Seletiva da IOI 2021
+
+### DSU e tricks
+
+Aula de Tiago Domingos Souza (tdas)
+
+Descrição: aula trata desde uma introdução e depois insere truques mais avançados, como:
+
+- Roolback: desfazendo a última operação de merge
+
+- small-to-large: como manter outras propriedades de cada conjunto de forma eficiente
+
+- min(x,n-x) trick: um truque pouco comum, mas bastante interessante
+
+[Video](https://drive.google.com/file/d/1dx2IkndVoVb44_UZVQyEs4GIDNe-WOXy/view)
+[PDF](https://olimpiada.ic.unicamp.br/static/extras/aulas/seletivaIOI2021_dsu_tdas.pdf)
+
+Para mais aulas da seletiva da IOI acesse esse link do site da [OBI](https://olimpiada.ic.unicamp.br/estude/aulas_seletivaIOI2021/).
