@@ -205,6 +205,12 @@
         "slug": "palindromic-tree",
         "obi_frequency": 0,
         "icpc_frequency": 1
+      },
+      {
+        "name": "Árvore de Sufixo",
+        "slug": "arvore-de-sufixo",
+        "obi_frequency": 0,
+        "icpc_frequency": 2
       }
     ]
   },
@@ -245,14 +251,8 @@
     "image": "code_marathon_contents/categories/grafos.png",
     "subjects": [
       {
-        "name": "Introdução a Grafos",
-        "slug": "introducao-a-grafos",
-        "obi_frequency": 4,
-        "icpc_frequency": 4
-      },
-      {
-        "name": "Busca em Largura (BFS)",
-        "slug": "busca-em-largura",
+        "name": "Introdução e Busca em Grafos (BFS e DFS)",
+        "slug": "introducao-e-busca-em-grafos",
         "obi_frequency": 4,
         "icpc_frequency": 4
       },
@@ -267,6 +267,12 @@
         "slug": "algoritmo-de-kruskal",
         "obi_frequency": 2,
         "icpc_frequency": 2
+      },
+      {
+        "name": "DFS Avançada",
+        "slug": "busca-em-profundidade-avancada",
+        "obi_frequency": 0,
+        "icpc_frequency": 3
       },
       {
         "name": "Centroid Decomposition",
