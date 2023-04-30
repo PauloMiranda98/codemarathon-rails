@@ -139,6 +139,12 @@
         "icpc_frequency": 4
       },
       {
+        "name": "Árvore de Indexação Binária (BIT, Fenwick Tree)",
+        "slug": "arvore-de-indexacao-binaria",
+        "obi_frequency": 3,
+        "icpc_frequency": 3
+      },
+      {
         "name": "Árvore de Segmento Persistente",
         "slug": "arvore-de-segmento-persistente",
         "obi_frequency": 2,
@@ -156,6 +162,12 @@
         "slug": "algoritmo-guloso",
         "obi_frequency": 4,
         "icpc_frequency": 4
+      },
+      {
+        "name": "Two Pointers",
+        "slug": "two-pointers",
+        "obi_frequency": 2,
+        "icpc_frequency": 2
       },
       {
         "name": "Busca Binária",
