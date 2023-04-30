@@ -42,3 +42,13 @@ https://drive.google.com/drive/u/0/folders/1WCpWlAyrkWwZJOiQx-q43FKxpCCT3pBb
 ```youtube
 cu3kKbkEZSw
 ```
+
+### MaratonUSP
+
+#### Ordenação, busca binária e complexidade | Aula 03 | BixeCamp
+
+Nessa terceira aula do BixeCamp, Gabriel (Sussu) Fernandes vai nos mostrar um pouco sobre ordenação, busca binaria e complexidade. Tais técnicas permitem implementações mais rápidas, assegurando que problemas irão ser passados dentro do tempo máximo.
+
+```youtube
+ei5hlqSaw1Q
+```

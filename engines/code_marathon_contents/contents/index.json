@@ -201,6 +201,12 @@
         "icpc_frequency": 3
       },
       {
+        "name": "Array de Sufixo",
+        "slug": "array-de-sufixo",
+        "obi_frequency": 0,
+        "icpc_frequency": 2
+      },
+      {
         "name": "Palindromic Tree",
         "slug": "palindromic-tree",
         "obi_frequency": 0,
@@ -287,10 +293,22 @@
         "icpc_frequency": 1
       },
       {
-        "name": "Fluxo Máximo",
-        "slug": "fluxo-maximo",
+        "name": "Fluxo Máximo e Corte Mínimo",
+        "slug": "fluxo-maximo-e-corte-minimo",
         "obi_frequency": 0,
         "icpc_frequency": 3
+      },
+      {
+        "name": "Algoritmo de Floyd-Warshall",
+        "slug": "algoritmo-de-floyd-warshall",
+        "obi_frequency": 0,
+        "icpc_frequency": 2
+      },
+      {
+        "name": "Caixeiro Viajante",
+        "slug": "caixeiro-viajante",
+        "obi_frequency": 0,
+        "icpc_frequency": 1
       }
     ]
   },
@@ -304,6 +322,12 @@
         "slug": "stress-test",
         "obi_frequency": 1,
         "icpc_frequency": 1
+      },
+      {
+        "name": "Teoria dos Jogos",
+        "slug": "teoria-dos-jogos",
+        "obi_frequency": 0,
+        "icpc_frequency": 3
       }
     ]
   }
