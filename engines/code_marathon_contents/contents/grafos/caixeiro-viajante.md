@@ -1,6 +1,6 @@
 # Caixeiro Viajante
 
-Nesse artigo vamos apresentar vários conteúdos produzidos pela comunidade brasileira sobre algoritmo de Caixeiro Viajante.
+Nesse artigo vamos apresentar vários conteúdos produzidos pela comunidade brasileira sobre algoritmo do Caixeiro Viajante.
 
 ## Conteúdos em vídeo
 
