@@ -15,29 +15,9 @@ O sistema foi desenvolvido em Ruby on Rails. Alguns componentes mais dinâmicos 
 
 ### Configurando o sistema
 
-Primeiro você vai precisar instalar o Ruby on Rails e o PostgreSQL.
+Primeiro você vai precisar instalar o Ruby on Rails.
 
-Após isso, será necessário criar um arquivo `config/database.yml` com as credenciais do seu banco de dados.
-
-```yml
-defaults: &defaults
-  adapter: postgresql
-  pool: 5
-  username: USERNAME_AQUI
-  password: SENHA_AQUI
-  host: localhost
-  port: 5432
-
-development:
-  <<: *defaults
-  database: codemarathon_development
-
-test:
-  <<: *defaults
-  database: codemarathon_test
-```
-
-Agora, execute o `bundle install` para instalar as bibliotecas.
+Após isso, execute o comando `./bin/setup` para configurar o ambiente.
 
 Por fim, basta executar o comando `./bin/dev` para subir o servidor.
 
