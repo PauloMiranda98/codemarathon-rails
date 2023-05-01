@@ -1,5 +1,13 @@
 # Recorrência Linear
 
+Nesse artigo vamos apresentar vários conteúdos produzidos pela comunidade brasileira sobre Recorrência Linear.
+
+## Conteúdos em vídeo
+
+### Code Marathon
+
+#### Recorrência Linear - Code Marathon
+
 Com estes vídeos é possível aprender como resolver as seguintes recorrências em O(log(N)).
 
 $$
@@ -25,10 +33,6 @@ g(n) =
 5 \cdot g(n-1) + n^2 +n + 3 & \text{se} \; n \gt 0
 \end{Bmatrix}
 $$
-
-## Videos do Conteúdo
-
-### Code Marathon
 
 ```youtube
 8vFl3icrdZw
@@ -73,9 +77,18 @@ struct Matriz{
 
 ```
 
-### Marathon USP
+### MaratonUSP
 
-[![Video Sobre Recorrência Linear do Marathon USP](https://img.youtube.com/vi/5_KawI8rQSc/0.jpg)](https://www.youtube.com/watch?v=5_KawI8rQSc)
+#### Exponenciação Rápida e Recorrência Linear
+
+Tópicos da aula:
+
+- Exponenciação Rápida
+- Recorrências Lineares
+
+```youtube
+5_KawI8rQSc
+```
 
 ## Material Complementar
 - [Portal OBMEP - Recorrências](https://portaldaobmep.impa.br/index.php/modulo/ver?modulo=82)

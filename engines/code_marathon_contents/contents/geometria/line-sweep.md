@@ -11,3 +11,13 @@ Nesse artigo vamos apresentar vários conteúdos produzidos pela comunidade bras
 ```youtube
 hJDOgmozuNk
 ```
+
+### MaratonUSP
+
+#### Line Sweep
+
+Nessa aula avançada, Gabriel (sussu) nos explica sobre Line Sweep, uma técnica muito legal utilizada para resolver problemas com soluções geométricas.
+
+```youtube
+3ph6V32oja0
+```

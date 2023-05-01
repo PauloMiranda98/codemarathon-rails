@@ -36,6 +36,14 @@ Nessa primeira aula do BixeCamp, dada pelo nosso Coach, Nathan, foram mostrado t
 AOTRSZ_TPXE
 ```
 
+#### Arrays, matrizes e funções | Aula 02 | BixeCamp
+
+Nessa segunda aula, o querido Gabriel Russo nos ensina sobre arrays, matrizes e funções no C++, além de resolver 2 exercícios de exemplo do SPOJ.
+
+```youtube
+Ym0FMpQUGBs
+```
+
 ### GEMA ICMC
 
 #### Fiz um FOR num ARRAY e OLHA NO QUE DEU (compilou????) 🎈 GEMA Aula #2 🎈

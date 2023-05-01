@@ -139,6 +139,12 @@
         "icpc_frequency": 4
       },
       {
+        "name": "Árvore de Indexação Binária (BIT, Fenwick Tree)",
+        "slug": "arvore-de-indexacao-binaria",
+        "obi_frequency": 3,
+        "icpc_frequency": 3
+      },
+      {
         "name": "Árvore de Segmento Persistente",
         "slug": "arvore-de-segmento-persistente",
         "obi_frequency": 2,
@@ -156,6 +162,12 @@
         "slug": "algoritmo-guloso",
         "obi_frequency": 4,
         "icpc_frequency": 4
+      },
+      {
+        "name": "Two Pointers",
+        "slug": "two-pointers",
+        "obi_frequency": 2,
+        "icpc_frequency": 2
       },
       {
         "name": "Busca Binária",
@@ -201,10 +213,34 @@
         "icpc_frequency": 3
       },
       {
+        "name": "String Hashing",
+        "slug": "string-hashing",
+        "obi_frequency": 0,
+        "icpc_frequency": 3
+      },
+      {
+        "name": "Z Function",
+        "slug": "z-function",
+        "obi_frequency": 0,
+        "icpc_frequency": 1
+      },
+      {
+        "name": "Array de Sufixo",
+        "slug": "array-de-sufixo",
+        "obi_frequency": 0,
+        "icpc_frequency": 2
+      },
+      {
         "name": "Palindromic Tree",
         "slug": "palindromic-tree",
         "obi_frequency": 0,
         "icpc_frequency": 1
+      },
+      {
+        "name": "Árvore de Sufixo",
+        "slug": "arvore-de-sufixo",
+        "obi_frequency": 0,
+        "icpc_frequency": 2
       }
     ]
   },
@@ -222,6 +258,12 @@
       {
         "name": "Produto Escalar e Vetorial",
         "slug": "produto-escalar-e-vetorial",
+        "obi_frequency": 2,
+        "icpc_frequency": 3
+      },
+      {
+        "name": "Geometria Computacional",
+        "slug": "geometria-computacional",
         "obi_frequency": 2,
         "icpc_frequency": 3
       },
@@ -245,14 +287,8 @@
     "image": "code_marathon_contents/categories/grafos.png",
     "subjects": [
       {
-        "name": "Introdução a Grafos",
-        "slug": "introducao-a-grafos",
-        "obi_frequency": 4,
-        "icpc_frequency": 4
-      },
-      {
-        "name": "Busca em Largura (BFS)",
-        "slug": "busca-em-largura",
+        "name": "Introdução e Busca em Grafos (BFS e DFS)",
+        "slug": "introducao-e-busca-em-grafos",
         "obi_frequency": 4,
         "icpc_frequency": 4
       },
@@ -269,6 +305,18 @@
         "icpc_frequency": 2
       },
       {
+        "name": "DFS Avançada",
+        "slug": "busca-em-profundidade-avancada",
+        "obi_frequency": 0,
+        "icpc_frequency": 3
+      },
+      {
+        "name": "Menor Ancestral Comum",
+        "slug": "menor-ancestral-comum",
+        "obi_frequency": 2,
+        "icpc_frequency": 2
+      },
+      {
         "name": "Centroid Decomposition",
         "slug": "centroid-decomposition",
         "obi_frequency": 0,
@@ -281,10 +329,22 @@
         "icpc_frequency": 1
       },
       {
-        "name": "Fluxo Máximo",
-        "slug": "fluxo-maximo",
+        "name": "Fluxo Máximo e Corte Mínimo",
+        "slug": "fluxo-maximo-e-corte-minimo",
         "obi_frequency": 0,
         "icpc_frequency": 3
+      },
+      {
+        "name": "Algoritmo de Floyd-Warshall",
+        "slug": "algoritmo-de-floyd-warshall",
+        "obi_frequency": 0,
+        "icpc_frequency": 2
+      },
+      {
+        "name": "Caixeiro Viajante",
+        "slug": "caixeiro-viajante",
+        "obi_frequency": 0,
+        "icpc_frequency": 1
       }
     ]
   },
@@ -294,10 +354,22 @@
     "image": "code_marathon_contents/categories/variados.png",
     "subjects": [
       {
+        "name": "Problemas Clássicos",
+        "slug": "problemas-classicos",
+        "obi_frequency": 2,
+        "icpc_frequency": 2
+      },
+      {
         "name": "Stress Test",
         "slug": "stress-test",
         "obi_frequency": 1,
         "icpc_frequency": 1
+      },
+      {
+        "name": "Teoria dos Jogos",
+        "slug": "teoria-dos-jogos",
+        "obi_frequency": 0,
+        "icpc_frequency": 3
       }
     ]
   }

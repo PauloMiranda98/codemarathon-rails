@@ -13,3 +13,13 @@ Aula sobre a teoria e implementação por trás do algoritmo de Dijkstra, aprese
 ```youtube
 Kue4UUxstoU
 ```
+
+### MaratonUSP
+
+#### Grafos 2 | Aula 07 | BixeCamp
+
+Nessa setima aula do bixecamp, Morete fala sobre a segunda parte de grafos. Mostrando o algoritmo para realizar uma busca em largura (BFS) e o algoritmo de Dijkstra para achar o caminho minimo em um grafo com pesos em arestas.
+
+```youtube
+DelS0yBJSyI
+```

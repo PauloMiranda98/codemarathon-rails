@@ -22,6 +22,26 @@ Na aula apresentamos um problema clássico (Longest Common Subsequence) envolven
 KmOIGwEqFWQ
 ```
 
+### MaratonUSP
+
+#### Programação Dinâmica
+
+Tópicos da aula:
+
+- Recursão e Introdução à Programação Dinâmica
+
+```youtube
+eLqKBivIxJI
+```
+
+#### Programação dinâmica | Aula 08 | BixeCamp
+
+Nessa aula vamos oferecer um primeiro contato com programação dinâmica. Começaremos revisando o conceito de recursão e apresentaremos o problema da mochila e o problema da maior subsequência crescente.
+
+```youtube
+IHuZAgKGM6Y
+```
+
 ### Rodrigo Paes
 
 No canal do Rodrigo Paes, existe uma playlist explicando o assunto de programação dinâmica e mostrando os exemplos clássicos: https://www.youtube.com/watch?v=ypsVpY9bis8&list=PL4Z4KvihWKj-1m8GhroJqu9K2GltqNUvX

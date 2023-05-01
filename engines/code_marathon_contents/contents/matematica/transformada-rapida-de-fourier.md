@@ -170,6 +170,14 @@ vector<ll> multiply(vector<int> const& a, vector<int> const& b) {
 eDQHSQU67t4
 ```
 
+### MaratonUSP
+
+#### Transformada Rápida de Fourier (FFT)
+
+```youtube
+-6_wGbOCu1o
+```
+
 ## Material Complementar
 - [O Slide Mais Didático de Todos os Tempos](http://web.cecs.pdx.edu/~maier/cs584/Lectures/lect07b-11-MG.pdf)
 - [Fast Fourier Transform](https://cp-algorithms.com/algebra/fft.html)
