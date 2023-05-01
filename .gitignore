@@ -33,9 +33,11 @@
 /app/assets/builds/*
 !/app/assets/builds/.keep
 
-/config/database.yml
 /config/credentials.yml.enc
 
 /node_modules
 /config/env_variables.yml
 /coverage
+
+# Remove DB SQLite
+/db/sqlite/
