@@ -35,3 +35,15 @@ Tópicos da aula:
 ```youtube
 WVfOzEm5BwQ
 ```
+
+#### Fluxo Máximo
+
+```youtube
+Rosp-jCe75Y
+```
+
+#### Modelagens com fluxo máximo
+
+```youtube
+8lZpP42mfMQ
+```

@@ -213,6 +213,18 @@
         "icpc_frequency": 3
       },
       {
+        "name": "String Hashing",
+        "slug": "string-hashing",
+        "obi_frequency": 0,
+        "icpc_frequency": 3
+      },
+      {
+        "name": "Z Function",
+        "slug": "z-function",
+        "obi_frequency": 0,
+        "icpc_frequency": 1
+      },
+      {
         "name": "Array de Sufixo",
         "slug": "array-de-sufixo",
         "obi_frequency": 0,
@@ -246,6 +258,12 @@
       {
         "name": "Produto Escalar e Vetorial",
         "slug": "produto-escalar-e-vetorial",
+        "obi_frequency": 2,
+        "icpc_frequency": 3
+      },
+      {
+        "name": "Geometria Computacional",
+        "slug": "geometria-computacional",
         "obi_frequency": 2,
         "icpc_frequency": 3
       },
@@ -293,6 +311,12 @@
         "icpc_frequency": 3
       },
       {
+        "name": "Menor Ancestral Comum",
+        "slug": "menor-ancestral-comum",
+        "obi_frequency": 2,
+        "icpc_frequency": 2
+      },
+      {
         "name": "Centroid Decomposition",
         "slug": "centroid-decomposition",
         "obi_frequency": 0,
@@ -329,6 +353,12 @@
     "slug": "variados",
     "image": "code_marathon_contents/categories/variados.png",
     "subjects": [
+      {
+        "name": "Problemas Clássicos",
+        "slug": "problemas-classicos",
+        "obi_frequency": 2,
+        "icpc_frequency": 2
+      },
       {
         "name": "Stress Test",
         "slug": "stress-test",
