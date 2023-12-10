@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "fileutils"
+
+# path to your application root.
+APP_ROOT = File.expand_path("..", __dir__)
+
+FileUtils.chdir APP_ROOT do
+  puts "\n== Security audit dependencies =="
+  system "bundle exec bundler-audit --update"
+
+  puts "\n== Security audit application code =="
+  system "bundle exec brakeman -q -w2"
+
+  puts "\n== Lint Ruby files =="
+  system "bundle exec rubocop --parallel"
+end
