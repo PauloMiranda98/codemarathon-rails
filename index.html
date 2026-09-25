@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html class="h-full" lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Code Marathon</title>
+    <meta name="description" content="O Code Marathon é um site onde pessoas interessadas por Maratona de Programação e Olimpíada Brasileira de Informática podem aprender os conteúdos recorrentes nessas competições." />
+    <!-- SPA Redirect Handler for GitHub Pages -->
+    <script type="text/javascript">
+      (function(l) {
+        if (l.search[1] === '/' ) {
+          var decoded = l.search.slice(1).split('&').map(function(s) { 
+            return s.replace(/~and~/g, '&')
+          }).join('?');
+          window.history.replaceState(null, null,
+              l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      }(window.location))
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" />
+    <script type="module" crossorigin src="/assets/index-6d2dfb71.js"></script>
+    <link rel="stylesheet" href="/assets/index-2156e64d.css">
+  </head>
+  <body class="h-full bg-gray-50 text-gray-900">
+    <div id="root" class="min-h-full flex flex-col"></div>
+    
+  </body>
+</html>
