@@ -27,6 +27,8 @@ jobs:
 
       - name: Build project
         run: yarn build
+        env:
+          GITHUB_PAGES: true
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
