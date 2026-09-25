@@ -12,7 +12,7 @@ export const Navbar: React.FC = () => {
   const navItems = [
     { title: 'Início', path: '/' },
     { title: 'Conteúdo', path: '/conteudos' },
-    { title: 'Upsolving Codeforces', path: '/upsolving-codeforces' },
+    //{ title: 'Upsolving Codeforces', path: '/upsolving-codeforces' },
     { title: 'Sobre', path: '/sobre' },
   ];
 
