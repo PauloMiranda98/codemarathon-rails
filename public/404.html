@@ -1,24 +1,23 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <title>Página Não Existe - Code Marathon</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta charset="UTF-8">
-  <link rel="icon" href="/favicon.png">
-  <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.4/dist/flowbite.min.css" />
-</head>
-
-<body>
-  <script src="https://unpkg.com/flowbite@1.5.4/dist/flowbite.js"></script>
-  <section class="bg-white dark:bg-gray-900">
-    <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
-      <div class="mx-auto max-w-screen-sm text-center">
-        <img src="/404.svg" class="w-96 inline-flex text-center my-4"/>
-        <p class="mb-4 text-3xl tracking-tight font-bold text-gray-900 md:text-4xl dark:text-white">Página não existe</p>
-        <p class="mb-4 text-lg font-light text-gray-500 dark:text-gray-400">Tente acessar esse conteúdo navegando pelo site</p>
-        <a href="/" class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 my-4">Voltar para a Home</a>
-      </div>   
-    </div>
-  </section>
-</body>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Code Marathon</title>
+    <script type="text/javascript">
+      // Single Page Apps for GitHub Pages
+      // MIT License
+      // https://github.com/rafgraph/spa-github-pages
+      var pathSegmentsToKeep = 1;
+      var l = window.location;
+      l.replace(
+        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+        l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+        l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+        (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+        l.hash
+      );
+    </script>
+  </head>
+  <body>
+  </body>
 </html>

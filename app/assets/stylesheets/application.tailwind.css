@@ -1,6 +1,0 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-.katex-display { overflow: auto hidden }
-.katex-display > .katex { white-space: normal }

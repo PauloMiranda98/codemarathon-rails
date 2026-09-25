@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply antialiased text-gray-900 bg-gray-50;
+  }
+}
+
+/* Custom markdown math and highlight styles */
+.prose pre {
+  @apply rounded-lg shadow-md;
+}
+
+.prose p {
+  @apply my-4 leading-relaxed;
+}
+
+.prose h1, .prose h2, .prose h3, .prose h4 {
+  @apply font-bold text-gray-900 dark:text-white;
+}
