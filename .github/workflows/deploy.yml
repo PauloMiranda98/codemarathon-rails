@@ -33,8 +33,10 @@ jobs:
 
       - name: Build project
         run: yarn build
-        env:
-          GITHUB_PAGES: true
+        # Uncomment the lines below if you remove the custom domain and want
+        # to serve the site under /codemarathon-rails/ on github.io
+        # env:
+        #   NO_CUSTOM_DOMAIN: true
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

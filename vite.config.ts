@@ -29,5 +29,8 @@ export default defineConfig({
       },
     },
   ],
-  base: process.env.GITHUB_PAGES ? '/codemarathon-rails/' : '/',
+  // When deploying to GitHub Pages without a custom domain, the site is served
+  // under /codemarathon-rails/. Set NO_CUSTOM_DOMAIN=true in the workflow to
+  // enable this. With a custom domain (e.g. codemarathon.com.br), leave it unset.
+  base: process.env.NO_CUSTOM_DOMAIN ? '/codemarathon-rails/' : '/',
 });
