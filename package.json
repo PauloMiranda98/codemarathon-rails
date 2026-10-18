@@ -10,27 +10,27 @@
     "deploy": "yarn build && gh-pages -d dist"
   },
   "dependencies": {
-    "@tailwindcss/typography": "^0.5.9",
-    "flowbite": "^1.6.5",
-    "flowbite-react": "^0.4.7",
-    "highlight.js": "^11.8.0",
-    "katex": "^0.16.8",
-    "marked": "^5.1.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.14.2"
+    "@tailwindcss/typography": "^0.5.20",
+    "flowbite": "^1.8.1",
+    "flowbite-react": "^0.12.17",
+    "highlight.js": "^11.12.0",
+    "katex": "^0.19.0",
+    "marked": "^18.1.1",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-router-dom": "^7.18.4"
   },
   "devDependencies": {
-    "@types/katex": "^0.16.0",
-    "@types/node": "^20.4.2",
-    "@types/react": "^18.2.15",
-    "@types/react-dom": "^18.2.7",
-    "@vitejs/plugin-react": "^4.0.3",
-    "autoprefixer": "^10.4.14",
-    "gh-pages": "^5.0.0",
-    "postcss": "^8.4.26",
-    "tailwindcss": "^3.3.3",
-    "typescript": "^5.1.6",
-    "vite": "^4.4.4"
+    "@types/katex": "^0.16.8",
+    "@types/node": "^26.6.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "autoprefixer": "^10.6.1",
+    "gh-pages": "^6.3.0",
+    "postcss": "^8.5.30",
+    "tailwindcss": "^3.4.19",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.4"
   }
 }

@@ -11,7 +11,7 @@ export default defineConfig({
       configureServer(server) {
         server.middlewares.use('/contents', (req, res, next) => {
           const relativePath = (req.url || '').split('?')[0];
-          const filePath = path.join(__dirname, 'contents', relativePath);
+          const filePath = path.join(import.meta.dirname, 'contents', relativePath);
           if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
             if (filePath.endsWith('.json')) {
               res.setHeader('Content-Type', 'application/json; charset=utf-8');

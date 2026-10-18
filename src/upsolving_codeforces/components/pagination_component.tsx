@@ -46,7 +46,7 @@ export class PaginationComponent extends React.Component<PaginationProps> {
               Voltar
             </button>
           </li>
-          {pages.map((page: number, index: number): JSX.Element => {
+          {pages.map((page: number, index: number): React.JSX.Element => {
             if (page === -1) {
               return (
                 <li key={`dots-${index}`}>

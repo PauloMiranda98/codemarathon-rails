@@ -49,16 +49,21 @@ export const MarkdownWithLatex: React.FC<MarkdownWithLatexProps> = ({ content })
 
     // Ensure links open in new tab
     const originalLink = renderer.link.bind(renderer);
-    renderer.link = (href: string | null, title: string | null, text: string) => {
-      const html = originalLink(href, title, text);
+    renderer.link = function (this: any, ...args: any[]) {
+      const html = (originalLink as any).apply(this, args);
       return html.replace(/^<a /, '<a target="_blank" rel="noopener noreferrer" ');
     };
 
     // Render youtube code blocks as embedded responsive iframes
     const originalCode = renderer.code.bind(renderer);
-    renderer.code = (code: string, language: string | undefined, isEscaped: boolean) => {
+    renderer.code = function (this: any, ...args: any[]) {
+      const firstArg = args[0];
+      const isToken = typeof firstArg === 'object' && firstArg !== null;
+      const language = isToken ? firstArg.lang : args[1];
+      const code = isToken ? firstArg.text : firstArg;
+
       if (language === 'youtube') {
-        const videoId = code.trim();
+        const videoId = (code || '').trim();
         return `<div class="my-6 w-full max-w-3xl mx-auto overflow-hidden rounded-xl shadow-lg bg-black">
           <iframe
             class="w-full aspect-video border-0"
@@ -69,7 +74,7 @@ export const MarkdownWithLatex: React.FC<MarkdownWithLatexProps> = ({ content })
           ></iframe>
         </div>`;
       }
-      return originalCode(code, language, isEscaped);
+      return (originalCode as any).apply(this, args);
     };
 
     const html = marked.parse(text, {
